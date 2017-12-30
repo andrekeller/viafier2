@@ -1,0 +1,71 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-30 18:54+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: gallery/apps.py:7
+msgid "gallery"
+msgstr "Bildgalerie"
+
+#: gallery/models.py:17 gallery/models.py:29 gallery/models.py:68
+msgid "author"
+msgstr "Autor"
+
+#: gallery/models.py:24
+msgid "affiliation"
+msgstr "Affiliation"
+
+#: gallery/models.py:30
+msgid "authors"
+msgstr "Autoren"
+
+#: gallery/models.py:44
+msgid "license name"
+msgstr "Lizenzbezeichnung"
+
+#: gallery/models.py:48
+msgid "url"
+msgstr "Link"
+
+#: gallery/models.py:49
+msgid "url to license text"
+msgstr "Link zum Lizenztext"
+
+#: gallery/models.py:54 gallery/models.py:76
+msgid "license"
+msgstr "Bildlizenz"
+
+#: gallery/models.py:55
+msgid "licenses"
+msgstr "Bildlizenzen"
+
+#: gallery/models.py:82
+msgid "link to original picture"
+msgstr "Link zum Originalbild"
+
+#: gallery/models.py:83
+msgid "source"
+msgstr "Quelle"
+
+#: gallery/models.py:88 gallery/models.py:92
+msgid "picture"
+msgstr "Bild"
+
+#: gallery/models.py:93
+msgid "pictures"
+msgstr "Bilder"

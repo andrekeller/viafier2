@@ -1,0 +1,17 @@
+# compiled translation
+django.mo
+
+# runtime files
+__pycache__/
+
+# python virtualenv
+/venv/
+
+# pycharm
+/.idea/**/workspace.xml
+/.idea/**/tasks.xml
+/.idea/dataSources/
+/.idea/dictionaries
+
+# development-time media files
+/media/

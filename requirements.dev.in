@@ -1,0 +1,9 @@
+Django
+django-debug-toolbar
+django-taggit
+ipython
+mistune
+pillow
+pip-tools
+psycopg2
+pyprind

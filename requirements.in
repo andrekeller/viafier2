@@ -1,0 +1,7 @@
+Django
+django-taggit
+mistune
+pillow
+pip-tools
+psycopg2
+pyprind
