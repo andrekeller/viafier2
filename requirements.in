@@ -1,4 +1,5 @@
 Django
+django-nested-admin
 django-taggit
 mistune
 pillow

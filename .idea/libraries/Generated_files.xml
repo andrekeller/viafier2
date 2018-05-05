@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="Generated files" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/viafier2/static/vendor/lightbox2/js/lightbox-plus-jquery.min.js" />
+        <item url="file://$PROJECT_DIR$/viafier2/static/vendor/lightbox2/js/lightbox.min.js" />
+        <item url="file://$PROJECT_DIR$/viafier2/static/vendor/lightbox2/js/lightbox.min.min.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/viafier2/static/menu.min.js" />
+      <root url="file://$PROJECT_DIR$/viafier2/static/vendor/lightbox2/js/lightbox-plus-jquery.min.js" />
+      <root url="file://$PROJECT_DIR$/viafier2/static/vendor/lightbox2/js/lightbox.min.js" />
+      <root url="file://$PROJECT_DIR$/viafier2/static/vendor/lightbox2/js/lightbox.min.min.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

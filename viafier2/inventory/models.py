@@ -1,5 +1,15 @@
 from django.db import models
+from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
+
+
+class ArticleManager(models.Manager):
+
+    def get_queryset(self):
+        return super().get_queryset().select_related(
+            'manufacturer',
+            'vendor'
+        )
 
 
 class Article(models.Model):
@@ -46,6 +56,8 @@ class Article(models.Model):
         verbose_name=_('price'),
     )
 
+    objects = ArticleManager()
+
     class Meta:
         ordering = ('number',)
         unique_together = ('manufacturer', 'number')
@@ -59,6 +71,24 @@ class Article(models.Model):
         )
 
 
+class AssemblyManager(models.Manager):
+
+    def get_queryset(self):
+        return super().get_queryset().select_related(
+            'assembly',
+            'assembly__type',
+            'configuration',
+            'configuration__article',
+            'configuration__article__manufacturer',
+            'configuration__picture',
+            'configuration__vehicle',
+            'configuration__vehicle__vehicle',
+            'configuration__vehicle__vehicle__klass',
+            'configuration__vehicle__vehicle__klass__operator',
+            'picture',
+        )
+
+
 class Assembly(models.Model):
     assembly = models.ForeignKey(
         on_delete=models.PROTECT,
@@ -68,7 +98,7 @@ class Assembly(models.Model):
         verbose_name=_('assembly'),
     )
     configuration = models.ForeignKey(
-        on_delete=models.PROTECT,
+        on_delete=models.CASCADE,
         related_name='assemblies',
         to='inventory.Configuration',
         # translation
@@ -83,6 +113,8 @@ class Assembly(models.Model):
         # translation
         verbose_name=_('picture'),
     )
+
+    objects = AssemblyManager()
 
     class Meta:
         ordering = ('assembly',)
@@ -116,9 +148,27 @@ class Company(models.Model):
         return "{name}".format(name=self.name)
 
 
+class ConfigurationManager(models.Manager):
+
+    def get_queryset(self):
+        return super().get_queryset().select_related(
+            'article',
+            'article__manufacturer',
+            'picture',
+            'picture__author',
+            'picture__license',
+            'vehicle',
+            'vehicle__vehicle',
+            'vehicle__vehicle__klass',
+            'vehicle__vehicle__klass__operator',
+        ).prefetch_related(
+            'assemblies',
+        )
+
+
 class Configuration(models.Model):
     article = models.ForeignKey(
-        on_delete=models.PROTECT,
+        on_delete=models.CASCADE,
         related_name='configurations',
         to='inventory.Article',
         # translation
@@ -148,13 +198,26 @@ class Configuration(models.Model):
         verbose_name=_('description'),
     )
 
+    objects = ConfigurationManager()
+
     class Meta:
-        ordering = ('article',)
+        ordering = ('vehicle',)
         verbose_name = _('configuration')
         verbose_name_plural = _('configurations')
 
     def __str__(self):
         return "{article}: {vehicle}".format(article=self.article, vehicle=self.vehicle)
+
+
+class VehicleManager(models.Manager):
+
+    def get_queryset(self):
+        return super().get_queryset().select_related(
+            'vehicle',
+            'vehicle__klass',
+            'vehicle__klass__operator',
+            'picture',
+        )
 
 
 class Vehicle(models.Model):
@@ -175,6 +238,8 @@ class Vehicle(models.Model):
         verbose_name=_('picture'),
     )
 
+    objects = VehicleManager()
+
     class Meta:
         ordering = ('vehicle',)
         verbose_name = _('vehicle')
@@ -182,3 +247,7 @@ class Vehicle(models.Model):
 
     def __str__(self):
         return "{vehicle}".format(vehicle=self.vehicle)
+
+    @property
+    def html(self):
+        return format_html("{}", self.vehicle.html)

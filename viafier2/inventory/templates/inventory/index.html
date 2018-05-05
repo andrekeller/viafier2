@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+{% load currency %}
+{% block content %}
+    <h1>Inventar</h1>
+    <div style="overflow-x: auto; padding: 1px;"><table style="table-layout: fixed">
+        <thead>
+        <tr>
+            <th>Artikel</th>
+            <th colspan="2">Beschreibung</th>
+            <th>Kaufdatum</th>
+            <th>Kaufpreis</th>
+            <th>&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for article in article_list %}
+            {% with article_rowspan=article.configuration_count %}
+                {% for configuration in article.configurations.all %}
+                    {% with forloop.counter|divisibleby:2|yesno:'even,odd' as zebra %}
+                    {% for assembly in configuration.assemblies.all %}
+                        <tr class="{{ forloop.parentloop.parentloop.counter|divisibleby:2|yesno:'even,odd' }}">
+                            {% if forloop.first %}
+                                {% if forloop.parentloop.first %}
+                                    <td class="border-top nowrap border-right-light"
+                                        rowspan="{{ article_rowspan }}"
+                                    >{{ article.manufacturer }} {{ article.number }}</td>
+                                {% endif %}
+                                {% with forloop.parentloop.first|yesno:' border-top,' as border %}
+                                    <td class="{{ zebra }}{{ border }} nowrap"
+                                        rowspan="{{ configuration.assemblies.count }}"
+                                    >{{ configuration.vehicle.html }}</td>
+                                    <td class="{{ zebra }}{{ border }} nowrap">
+                                {% endwith %}
+                            {% else %}
+                                <td class="{{ zebra }} nowrap">
+                            {% endif %}
+                            {{ assembly.assembly.type }}
+                            {{ assembly.assembly.name }} {{ assembly.assembly.number|default_if_none:"" }}
+                            </td>
+                            {% if forloop.first and forloop.parentloop.first %}
+                                <td class="border-top border-left-light"
+                                    rowspan="{{ article_rowspan }}"
+                                >{{ article.purchased|date:"SHORT_DATE_FORMAT"|default:_('unknown') }}</td>
+                                <td class="border-top border-left-light"
+                                    rowspan="{{ article_rowspan }}"
+                                    title="{{ article.vendor|default_if_none:_('private sale') }}"
+                                >{{ article.price|default_if_none:0|currency }}</td>
+                                <td class="border-top border-left-light"
+                                    style="max-width: 500px"
+                                    rowspan="{{ article_rowspan }}">
+                                    {% if configuration.picture %}
+                                        <a href="{{ configuration.picture.src }}"
+                                           data-lightbox="{{ configuration.picture }}"
+                                        ><img style="max-width: 100%; min-width: 150px;"
+                                             src="{{ configuration.picture.src }}"
+                                             srcset="{{ configuration.picture.srcset }}">
+                                        </a>
+                                    {% else %}
+                                        &nbsp;
+                                    {% endif %}
+                                </td>
+                            {% endif %}
+                        </tr>
+                    {% empty %}
+                        {% with forloop.first|yesno:' border-top,' as border %}
+                            <tr class="{{ forloop.parentloop.counter|divisibleby:2|yesno:'even,odd' }}">
+                                {% if forloop.first %}
+                                    <td class="border-top nowrap border-right-light"
+                                        rowspan="{{ article_rowspan }}"
+                                    >{{ article.manufacturer }} {{ article.number }}</td>
+                                {% endif %}
+                                <td class="{{ zebra }}{{ border }}"
+                                    colspan="2"
+                                >{{ configuration.vehicle.html }}</td>
+                                {% if forloop.first %}
+                                    <td class="border-top border-left-light nowrap"
+                                        rowspan="{{ article_rowspan }}"
+                                    >{{ article.purchased|date:"SHORT_DATE_FORMAT"|default:_('unknown') }}</td>
+                                    <td class="border-top border-left-light nowrap"
+                                        rowspan="{{ article_rowspan }}"
+                                        title="{{ article.vendor|default_if_none:_('private sale') }}"
+                                    >{{ article.price|default_if_none:0|currency }}</td>
+                                    <td class="border-top border-left-light"
+                                        style="max-width: 500px"
+                                        rowspan="{{ article_rowspan }}">
+                                        {% if configuration.picture %}
+                                            <a href="{{ configuration.picture.src }}"
+                                               data-lightbox="{{ configuration.picture }}"
+                                               data-title="{{ configuration.picture.author }} | {{ configuration.picture.license }}"
+                                            ><img style="max-width: 100%; min-width: 150px;"
+                                                  src="{{ configuration.picture.src }}"
+                                                  srcset="{{ configuration.picture.srcset }}">
+                                            </a>
+                                        {% else %}
+                                            &nbsp;
+                                        {% endif %}
+                                    </td>
+                                {% endif %}
+                            </tr>
+                        {% endwith %}
+                    {% endfor %}
+                    {% endwith %}
+                {% endfor %}
+            {% endwith %}
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    {% comment %}
+    <table>
+        <thead>
+        <tr>
+            <th>Hersteller</th>
+            <th>Artikelnummer</th>
+            <th>Artikeltyp</th>
+            <th>Beschreibung</th>
+            <th>Kaufdatum</th>
+            <th>Kaufpreis</th>
+            <th>Bild</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+        {% for article in article_list %}
+            {% cycle 'class="zebra"' '' as zebra silent %}
+            <tr style="border-top: 1px solid #232323" {{ zebra }}>
+                {% with inventory_count=article.inventory_count %}
+                    <td rowspan="{{ inventory_count }}">{{ article.manufacturer }}</td>
+                    <td rowspan="{{ inventory_count }}">{{ article.number }}</td>
+                    <td>{{ article.vehicle.klass.type.all|join:"<br />" }}</td>
+                    <td>{{ article.vehicle|default_if_none:article.set }}</td>
+                    <td rowspan="{{ inventory_count }}">{{ article.purchased|date:"d.m.Y" }}</td>
+                    <td rowspan="{{ inventory_count }}">{{ article.price }}</td>
+                    <td style="max-width: 350px; padding: 0 0 0 0" rowspan="{{ inventory_count }}">
+                        {% if article.picture %}
+                            <img style="max-width: 100%" src="{{ article.picture.src }}" srcset="{{ article.picture.srcset }}">
+                        {% else %}
+                            &nbsp;
+                        {% endif %}
+                    </td>
+                {% endwith %}
+                {% for set_article in article.articles %}
+                    <tr {{ zebra }} style="border-top: 1px solid {{ zebra|yesno:'#ffffff,#d4d4d4' }}">
+                        <td>{{ set_article.vehicle.klass.type.all|join:"<br />" }}</td>
+                        <td>{{ set_article.vehicle }}</td>
+                    </tr>
+                    {% for unit in set_article.units.all %}
+                        <tr {{ zebra }}>
+                            <td>{{ unit.type }}</td>
+                            <td>{{ unit.name }}{% if unit.number %} {{ unit.number }}{% endif %}</td>
+                        </tr>
+                    {% endfor %}
+                {% endfor %}
+            {% for unit in article.units.all %}
+                <tr {{ zebra }}>
+                    <td>{{ unit.type }}</td>
+                    <td>{{ unit.name }}{% if unit.number %} {{ unit.number }}{% endif %}</td>
+                </tr>
+            {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+    </table>
+    </table>
+    {% endcomment %}
+{% endblock %}

@@ -1,0 +1,43 @@
+{% load staticfiles %}
+{% load navigation %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>viafier.com</title>
+
+    <link href="{% static 'vendor/normalize.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/source-sans-pro/source-sans-pro.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/lightbox2/css/lightbox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'viafier.css' %}" rel="stylesheet">
+
+</head>
+<body>
+<nav id="main">
+    <ul>
+        <li class="nav-title"
+        ><div>&colon; &colon;</div><a href="#">viafier.com</a></li>
+    </ul>
+    {% block subnav %}
+    {% endblock %}
+</nav>
+<div id="content">
+    {% block content %}
+    {% endblock %}
+</div>
+<footer>
+    &copy;&nbsp;{% now "Y" %}
+    <a href="mailto:andre@viafier.com">Andr&eacute; Keller</a>
+    &nbsp;|&nbsp;
+    <a href="#">Impressum</a>
+    {% if user.is_authenticated %}
+        &nbsp;|&nbsp;
+        Angemeldet als <strong>{{ user.username }}</strong>
+    {% endif %}
+</footer>
+<script src="{% static 'vendor/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/lightbox2/js/lightbox.min.js' %}"></script>
+<script src="{% static 'menu.js' %}"></script>
+</body>
+</html>

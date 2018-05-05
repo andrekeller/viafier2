@@ -5,7 +5,6 @@
       <entry url="file://$PROJECT_DIR$">
         <entryData>
           <resourceRoots>
-            <path value="file://$PROJECT_DIR$/viafier2/templates" />
             <path value="file://$PROJECT_DIR$/viafier2/static" />
           </resourceRoots>
         </entryData>

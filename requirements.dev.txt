@@ -7,6 +7,7 @@
 click==6.7                # via pip-tools
 decorator==4.1.2          # via ipython, traitlets
 django-debug-toolbar==1.9.1
+django-nested-admin==3.0.21
 django-taggit==0.22.2
 django==2.0
 first==2.0.1              # via pip-tools
@@ -25,9 +26,10 @@ psycopg2==2.7.3.2
 ptyprocess==0.5.2         # via pexpect
 pygments==2.2.0           # via ipython
 pyprind==2.11.1
+python-monkey-business==1.0.0  # via django-nested-admin
 pytz==2017.3              # via django
 simplegeneric==0.8.1      # via ipython
-six==1.11.0               # via pip-tools, prompt-toolkit, traitlets
+six==1.11.0               # via pip-tools, prompt-toolkit, python-monkey-business, traitlets
 sqlparse==0.2.4           # via django-debug-toolbar
 traitlets==4.3.2          # via ipython
 wcwidth==0.1.7            # via prompt-toolkit

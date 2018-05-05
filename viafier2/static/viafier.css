@@ -1,0 +1,267 @@
+html {
+    height: 100%;
+}
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #f6f6f6;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+*:focus {
+    outline: none;
+}
+
+h1 {
+    font-size: 1.375rem;
+}
+h2 {
+    font-size: 1.25rem;
+}
+h3 {
+    font-size: 1.125rem;
+}
+a:link,
+
+a:active,
+a:visited {
+    color: #e2001a;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+.nowrap {
+    white-space: nowrap;
+}
+table {
+    border-collapse: collapse;
+    overflow-x: auto;
+}
+table td {
+    padding: 0.15rem 0.3rem 0.15rem 0.3rem;
+    vertical-align: top;
+}
+table th {
+    padding: 0.15rem 0.3rem 0.15rem 0.3rem;
+    text-align: left;
+}
+
+tr.even {
+    background: #e4e4e4;
+}
+
+tr.even td.even {
+    background: #f6f6f6;
+}
+
+tr.odd td.even {
+    background: #e4e4e4;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #000000;
+}
+.border-top {
+    border-top: 1px solid #000000;
+}
+.border-left {
+    border-left: 1px solid #000000;
+}
+.border-right {
+    border-right: 1px solid #000000;
+}
+.border-top-light{
+    border-top: 1px solid #ffffff;
+}
+.border-bottom-light {
+    border-bottom: 1px solid #ffffff;
+}
+.border-left-light {
+    border-left: 1px solid #ffffff;
+}
+.border-right-light {
+    border-right: 1px solid #ffffff;
+}
+/*** NAVIGATION ***/
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    float: left;
+    padding: 0;
+    margin: 0;
+}
+
+nav#main {
+    background-color: #232323;
+    width: 100%;
+}
+
+nav#main ul li a {
+    display: block;
+    font-size: 1.05rem;
+    padding: 0.675rem 0.375rem 0.25rem 0.375rem;
+    text-decoration: none;
+    color: #909090;
+}
+
+nav#main ul li a:hover,
+nav#main ul li.active a,
+nav#main ul li.active a:hover {
+    color: #ffffff;
+}
+
+nav#main ul li.nav-title {
+    float: right;
+}
+
+nav#main ul li.nav-title div {
+    display: none;
+    font-size: 0.95rem;
+    padding: 0.3125rem 0.375rem 0.25rem 0.375rem;
+    text-decoration: none;
+    color: #ffffff;
+    float: left;
+    cursor: pointer;
+}
+
+nav#main ul li.nav-title a {
+    text-align: center;
+    padding: 0.625em 1.5rem 0.75rem 1.5rem;
+    background-color: #e2001a;
+    color: #ffffff;
+    font-size: 1.125em;
+}
+
+nav#main ul:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+nav#sub {
+    width: 100%;
+    background-color: #909090;
+}
+
+nav#sub ul li a {
+    background: inherit;
+    display: block;
+    text-align: left;
+    font-size: 0.95rem;
+    padding: 0.25rem 0.375rem 0.25rem 0.375rem;
+    text-decoration: none;
+    color: #232323;
+    border: none;
+}
+nav#sub ul li:nth-child(2) a {
+    margin-left: 0;
+}
+
+nav#sub ul li a:hover,
+nav#sub ul li.active a,
+nav#sub ul li.active a:hover {
+    background-color: #909090;
+    color: #ffffff;
+    border: 0;
+}
+
+nav#sub ul:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+nav#subsub {
+    width: 100%;
+    background-color: #e2001a;
+}
+
+nav#subsub ul li a {
+    background: inherit;
+    display: block;
+    text-align: left;
+    font-size: 0.95rem;
+    padding: 0.25rem 0.375rem 0.25rem 0.375rem;
+    text-decoration: none;
+    color: #232323;
+    border: none;
+}
+
+nav#subsub ul li a:hover,
+nav#subsub ul li.active a,
+nav#subsub ul li.active a:hover {
+    background-color: #e2001a;
+    color: #ffffff;
+    border: 0;
+}
+
+nav#subsub ul:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/* mobile version */
+@media all and (max-width: 768px) {
+    nav#main ul li,
+    nav#main ul li.nav-title {
+        float: none;
+        width: 100%;
+        border-right: none;
+    }
+
+    nav#main ul li.nav-title div {
+        color: #ffffff;
+        cursor: pointer;
+        display: inline;
+        float: left;
+        font-size: 0.95rem;
+        font-weight: bold;
+        padding: 0.3125rem 0.375rem 0.25rem 0.375rem;
+    }
+
+    nav#main ul li a {
+        font-size: 0.95rem;
+        padding: 0.25rem 0.375rem 0.25rem 0.375rem;
+    }
+    nav#main ul li:first-child a {
+        border-radius: 0;
+        padding: 0.25rem 0.375rem 0.25rem 0.375rem;
+    }
+
+}
+
+/*** END NAVIGATION ***/
+
+div#content {
+    padding: 0.75rem;
+    flex: 1 0 auto;
+}
+
+footer {
+    display: block;
+    background-color: #909090;
+    padding: 0.25rem;
+    color: #232323;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+.flex-grid {
+    display: flex;
+}
+.col {
+    flex: 1;
+    padding: 0.25rem;
+}
+
+@media all and (max-width: 768px) {
+    .flex-grid {
+        display: block;
+    }
+}

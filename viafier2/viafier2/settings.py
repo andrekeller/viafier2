@@ -2,6 +2,7 @@
 Django settings for viafier2 project.
 """
 
+import os
 from os import getenv
 from django.utils.translation import gettext_lazy as _
 from pathlib import Path
@@ -34,7 +35,6 @@ DEBUG = any2bool(getenv('DJANGO_DEBUG', 'no'))
 
 ALLOWED_HOSTS = getenv('DJANGO_ALLOWED_HOSTS', '*').split()
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -44,7 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'nested_admin',
     'taggit',
+    # viafier2
+    'common',
     'gallery',
     'inventory',
     'rollingstock',
@@ -78,6 +81,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.media',
                 'django.template.context_processors.request',
+                'django.template.context_processors.i18n',
                 'django.template.context_processors.static',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -127,7 +131,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'de-ch'
+LANGUAGE_CODE = 'de-CH'
 
 TIME_ZONE = 'UTC'
 

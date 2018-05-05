@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-30 18:54+0000\n"
+"POT-Creation-Date: 2018-01-01 19:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,10 +18,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: viafier2/settings.py:172
+#: viafier2/settings.py:176
 msgid "English"
 msgstr "Englisch"
 
-#: viafier2/settings.py:173
+#: viafier2/settings.py:177
 msgid "German"
 msgstr "Deutsch"

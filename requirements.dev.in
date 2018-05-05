@@ -1,5 +1,6 @@
 Django
 django-debug-toolbar
+django-nested-admin
 django-taggit
 ipython
 mistune

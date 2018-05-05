@@ -5,6 +5,7 @@
 #    pip-compile --output-file requirements.txt requirements.in
 #
 click==6.7                # via pip-tools
+django-nested-admin==3.0.21
 django-taggit==0.22.2
 django==2.0
 first==2.0.1              # via pip-tools
@@ -14,5 +15,6 @@ pillow==4.3.0
 pip-tools==1.11.0
 psycopg2==2.7.3.2
 pyprind==2.11.1
+python-monkey-business==1.0.0  # via django-nested-admin
 pytz==2017.3              # via django
-six==1.11.0               # via pip-tools
+six==1.11.0               # via pip-tools, python-monkey-business
