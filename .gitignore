@@ -16,3 +16,6 @@ __pycache__/
 
 # development-time media files
 /media/
+
+# local env vars
+/.env

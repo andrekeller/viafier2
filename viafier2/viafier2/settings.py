@@ -23,7 +23,7 @@ def any2bool(obj):
 BASE_DIR = Path(__file__).parents[1]
 
 
-SECRET_KEY = getenv('DJANGO_SECRET_KEY', 'InsecureDefaultNeverUseItInProduction!')
+SECRET_KEY = getenv('DJANGO_SECRETKEY', 'InsecureDefaultNeverUseItInProduction!')
 DEBUG = any2bool(getenv('DJANGO_DEBUG', 'no'))
 ALLOWED_HOSTS = getenv('DJANGO_ALLOWED_HOSTS', '*').split()
 INTERNAL_IPS = [
@@ -145,6 +145,8 @@ if S3_BACKENDS:
     AWS_S3_ENDPOINT_URL = getenv('S3_ENDPOINT', 'https://objects.cloudscale.ch')
     AWS_DEFAULT_ACL = 'public-read'
     AWS_S3_CUSTOM_DOMAIN = getenv('S3_CUSTOMDOMAIN')
+    MEDIASTORAGE_BUCKET = getenv('S3_MEDIA_BUCKET', 'media')
+    STATICSTORAGE_BUCKET = getenv('S3_STATIC_BUCKET', 'static')
 
 MEDIA_URL = '/media/'
 THUMBNAIL_SIZES = (
@@ -154,7 +156,6 @@ THUMBNAIL_SIZES = (
     1800,
 )
 if 'media' in S3_BACKENDS:
-    MEDIASTORAGE_BUCKET = 'viafier-dev-media'
     DEFAULT_FILE_STORAGE = 'viafier2.s3storages.MediaStorage'
 else:
     MEDIA_ROOT = getenv('DJANGO_MEDIA_ROOT', Path(BASE_DIR.parents[0], 'media'))
@@ -164,7 +165,6 @@ STATICFILES_DIRS = (
     Path(BASE_DIR, 'static'),
 )
 if 'static' in S3_BACKENDS:
-    STATICSTORAGE_BUCKET = 'viafier-dev-static'
     STATICFILES_STORAGE = 'viafier2.s3storages.StaticStorage'
 else:
     STATIC_ROOT = getenv('DJANGO_STATIC_ROOT', Path(BASE_DIR.parents[0], 'static'))
