@@ -22,14 +22,9 @@ def any2bool(obj):
 
 BASE_DIR = Path(__file__).parents[1]
 
-
 SECRET_KEY = getenv('DJANGO_SECRETKEY', 'InsecureDefaultNeverUseItInProduction!')
 DEBUG = any2bool(getenv('DJANGO_DEBUG', 'no'))
 ALLOWED_HOSTS = getenv('DJANGO_ALLOWED_HOSTS', '*').split()
-INTERNAL_IPS = [
-    '127.0.0.1',
-]
-
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -60,6 +55,10 @@ MIDDLEWARE = [
 if DEBUG:
     INSTALLED_APPS = INSTALLED_APPS + ['debug_toolbar']
     MIDDLEWARE = ['debug_toolbar.middleware.DebugToolbarMiddleware'] + MIDDLEWARE
+
+    DEBUG_TOOLBAR_CONFIG = {
+        'SHOW_TOOLBAR_CALLBACK': lambda request: True,
+    }
 
 ROOT_URLCONF = 'viafier2.urls'
 
