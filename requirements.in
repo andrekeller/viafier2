@@ -7,3 +7,4 @@ pillow
 pip-tools
 psycopg2
 pyprind
+uwsgi
