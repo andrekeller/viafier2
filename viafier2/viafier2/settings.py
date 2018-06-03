@@ -142,7 +142,7 @@ S3_BACKENDS = getenv('S3_BACKENDS', 'media static').split()
 if S3_BACKENDS:
     AWS_ACCESS_KEY_ID = getenv('S3_ACCESSKEY')
     AWS_SECRET_ACCESS_KEY = getenv('S3_SECRETKEY')
-    AWS_S3_ENDPOINT_URL = getenv('S3_ENDPOINT', 'https://objects.cloudscale.ch')
+    AWS_S3_ENDPOINT_URL = "https://{}".format(getenv('S3_ENDPOINT', 'objects.cloudscale.ch'))
     AWS_DEFAULT_ACL = 'public-read'
     AWS_S3_CUSTOM_DOMAIN = getenv('S3_CUSTOMDOMAIN')
     MEDIASTORAGE_BUCKET = getenv('S3_MEDIA_BUCKET', 'media')
