@@ -34,6 +34,9 @@ a:hover {
 .nowrap {
     white-space: nowrap;
 }
+.error {
+    color: #e2001a;
+}
 table {
     border-collapse: collapse;
     overflow-x: auto;

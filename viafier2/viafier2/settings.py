@@ -2,7 +2,6 @@
 Django settings for viafier2 project.
 """
 
-import os
 from os import getenv
 from django.utils.translation import gettext_lazy as _
 from pathlib import Path
@@ -24,18 +23,13 @@ def any2bool(obj):
 BASE_DIR = Path(__file__).parents[1]
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = getenv('DJANGO_SECRET_KEY', 'InsecureDefaultNeverUseItInProduction!')
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = any2bool(getenv('DJANGO_DEBUG', 'no'))
-
 ALLOWED_HOSTS = getenv('DJANGO_ALLOWED_HOSTS', '*').split()
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
 
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -44,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'nested_admin',
+    'storages',
     'taggit',
     # viafier2
     'common',
@@ -93,10 +87,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'viafier2.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
+if any2bool(getenv('DJANGO_DATABASE_SSL', 'true')):
+    DATABASE_OPTIONS = {
+        'sslmode': 'require',
+    }
+else:
+    DATABASE_OPTIONS = {}
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -105,12 +101,9 @@ DATABASES = {
         'PASSWORD': getenv('DJANGO_DATABASE_PASSWORD', 'viafier2'),
         'HOST': getenv('DJANGO_DATABASE_HOST', '127.0.0.1'),
         'PORT': int(getenv('DJANGO_DATABASE_PORT', '5432')),
+        'OPTIONS': DATABASE_OPTIONS,
     }
 }
-
-
-# Password validation
-# https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -127,52 +120,55 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/2.0/topics/i18n/
-
 LANGUAGE_CODE = 'de-CH'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.0/howto/static-files/
-
-STATIC_URL = '/static/'
-
-STATIC_ROOT = getenv('DJANGO_STATIC_ROOT', None)
-STATICFILES_DIRS = (
-    Path(BASE_DIR, 'static'),
-)
-
-CSRF_COOKIE_SECURE = any2bool(getenv('DJANGO_CSRF_COOKIE_SECURE', 'no'))
-SESSION_COOKIE_SECURE = any2bool(getenv('DJANGO_SESSION_COOKIE_SECURE', 'no'))
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = getenv('DJANGO_MEDIA_ROOT', Path(BASE_DIR.parents[0], 'media'))
-
-THUMBNAIL_SIZES = (
-    250,
-    600,
-    950,
-    1500,
-)
-
-INTERNAL_IPS = [
-    '127.0.0.1',
-]
 LOCALEPATHS = [
     Path(BASE_DIR, 'locale'),
 ]
-
 LANGUAGES = [
     ('en', _('English')),
     ('de', _('German')),
 ]
+
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+S3_BACKENDS = getenv('S3_BACKENDS', 'media static').split()
+
+if S3_BACKENDS:
+    AWS_ACCESS_KEY_ID = getenv('S3_ACCESSKEY')
+    AWS_SECRET_ACCESS_KEY = getenv('S3_SECRETKEY')
+    AWS_S3_ENDPOINT_URL = getenv('S3_ENDPOINT', 'https://objects.cloudscale.ch')
+    AWS_DEFAULT_ACL = 'public-read'
+    AWS_S3_CUSTOM_DOMAIN = getenv('S3_CUSTOMDOMAIN')
+
+MEDIA_URL = '/media/'
+THUMBNAIL_SIZES = (
+    300,
+    600,
+    1200,
+    1800,
+)
+if 'media' in S3_BACKENDS:
+    MEDIASTORAGE_BUCKET = 'viafier-dev-media'
+    DEFAULT_FILE_STORAGE = 'viafier2.s3storages.MediaStorage'
+else:
+    MEDIA_ROOT = getenv('DJANGO_MEDIA_ROOT', Path(BASE_DIR.parents[0], 'media'))
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    Path(BASE_DIR, 'static'),
+)
+if 'static' in S3_BACKENDS:
+    STATICSTORAGE_BUCKET = 'viafier-dev-static'
+    STATICFILES_STORAGE = 'viafier2.s3storages.StaticStorage'
+else:
+    STATIC_ROOT = getenv('DJANGO_STATIC_ROOT', Path(BASE_DIR.parents[0], 'static'))
+
+
+CSRF_COOKIE_SECURE = any2bool(getenv('DJANGO_CSRF_COOKIE_SECURE', 'no'))
+SESSION_COOKIE_SECURE = any2bool(getenv('DJANGO_SESSION_COOKIE_SECURE', 'no'))

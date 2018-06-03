@@ -5,6 +5,7 @@
     <div style="overflow-x: auto; padding: 1px;"><table style="table-layout: fixed">
         <thead>
         <tr>
+            <th>#</th>
             <th>Artikel</th>
             <th colspan="2">Beschreibung</th>
             <th>Kaufdatum</th>
@@ -21,6 +22,8 @@
                         <tr class="{{ forloop.parentloop.parentloop.counter|divisibleby:2|yesno:'even,odd' }}">
                             {% if forloop.first %}
                                 {% if forloop.parentloop.first %}
+                                    <td class="border-top nowrap border-right-light"
+                                        rowspan="{{ article_rowspan }}">{{ forloop.parentloop.parentloop.counter }}</td>
                                     <td class="border-top nowrap border-right-light"
                                         rowspan="{{ article_rowspan }}"
                                     >{{ article.manufacturer }} {{ article.number }}</td>
@@ -40,6 +43,7 @@
                             {% if forloop.first and forloop.parentloop.first %}
                                 <td class="border-top border-left-light"
                                     rowspan="{{ article_rowspan }}"
+                                    title="{{ article.vendor }}"
                                 >{{ article.purchased|date:"SHORT_DATE_FORMAT"|default:_('unknown') }}</td>
                                 <td class="border-top border-left-light"
                                     rowspan="{{ article_rowspan }}"
@@ -66,6 +70,8 @@
                             <tr class="{{ forloop.parentloop.counter|divisibleby:2|yesno:'even,odd' }}">
                                 {% if forloop.first %}
                                     <td class="border-top nowrap border-right-light"
+                                        rowspan="{{ article_rowspan }}">{{ forloop.parentloop.counter }}</td>
+                                    <td class="border-top nowrap border-right-light"
                                         rowspan="{{ article_rowspan }}"
                                     >{{ article.manufacturer }} {{ article.number }}</td>
                                 {% endif %}
@@ -75,6 +81,7 @@
                                 {% if forloop.first %}
                                     <td class="border-top border-left-light nowrap"
                                         rowspan="{{ article_rowspan }}"
+                                        title="{{ article.vendor }}"
                                     >{{ article.purchased|date:"SHORT_DATE_FORMAT"|default:_('unknown') }}</td>
                                     <td class="border-top border-left-light nowrap"
                                         rowspan="{{ article_rowspan }}"

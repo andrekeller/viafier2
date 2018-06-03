@@ -96,7 +96,6 @@ class Operator(models.Model):
 class VehicleKlass(models.Model):
     klass = models.CharField(
         max_length=255,
-        unique=True,
         # translation
         verbose_name=_('class'),
     )
@@ -131,6 +130,7 @@ class VehicleKlass(models.Model):
         ordering = ('operator', 'klass',)
         verbose_name = _('vehicle class')
         verbose_name_plural = _('vehicle classes')
+        unique_together = ('klass', 'revision')
 
     def __str__(self):
         str_repr = "{} {}".format(self.operator.abbrev, self.klass)
@@ -192,6 +192,7 @@ class Vehicle(models.Model):
 
     class Meta:
         ordering = ('klass', 'number')
+        unique_together = ('klass', 'number')
         verbose_name = _('vehicle')
         verbose_name_plural = _('vehicles')
 

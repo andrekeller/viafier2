@@ -1,6 +1,4 @@
 from django.contrib import admin
-from nested_admin import NestedStackedInline
-from nested_admin import NestedModelAdmin
 from inventory.models import Article
 from inventory.models import Assembly
 from inventory.models import Company
@@ -8,7 +6,7 @@ from inventory.models import Configuration
 from inventory.models import Vehicle
 
 
-class AssemblyNestedInline(NestedStackedInline):
+class AssemblyInline(admin.StackedInline):
     extra = 0
     model = Assembly
     raw_id_fields = [
@@ -17,46 +15,49 @@ class AssemblyNestedInline(NestedStackedInline):
     ]
 
 
-class ConfigurationInline(NestedStackedInline):
+class ConfigurationInline(admin.StackedInline):
     extra = 0
     model = Configuration
-    inlines = [
-        AssemblyNestedInline,
-    ]
     raw_id_fields = [
         'vehicle',
         'picture',
     ]
 
-    #def get_queryset(self, request):
-    #    qs = super().get_queryset(request)
-    #    return qs.select_related()
 
-
-class ArticleAdmin(NestedModelAdmin):
-    inlines = [
-        ConfigurationInline,
-    ]
-    #raw_id_fields = [
-    #    'manufacturer',
-    #    'vendor',
-    #]
+class ArticleAdmin(admin.ModelAdmin):
+    search_fields = ['number']
     show_full_result_count = False
 
 
-class ConfigurationAdmin(NestedModelAdmin):
+class AssemblyAdmin(admin.ModelAdmin):
+    raw_id_fields = [
+        'assembly',
+        'picture',
+    ]
+
+
+class ConfigurationAdmin(admin.ModelAdmin):
+    autocomplete_fields = ['vehicle', 'article']
     inlines = [
-        AssemblyNestedInline,
+        AssemblyInline,
     ]
     show_full_result_count = False
+
+
+class CompanyAdmin(admin.ModelAdmin):
+    search_fields = [
+        'name'
+    ]
 
 
 class VehicleAdmin(admin.ModelAdmin):
+    autocomplete_fields = ['vehicle']
+    search_fields = ['vehicle__klass__klass', 'vehicle__number' ]
     show_full_result_count = False
 
 
 admin.site.register(Article, ArticleAdmin)
-admin.site.register(Assembly)
-admin.site.register(Company)
+admin.site.register(Assembly, AssemblyAdmin)
+admin.site.register(Company, CompanyAdmin)
 admin.site.register(Configuration, ConfigurationAdmin)
 admin.site.register(Vehicle, VehicleAdmin)

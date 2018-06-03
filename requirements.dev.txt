@@ -4,32 +4,37 @@
 #
 #    pip-compile --output-file requirements.dev.txt requirements.dev.in
 #
+backcall==0.1.0           # via ipython
+boto3==1.7.23
+botocore==1.10.23         # via boto3, s3transfer
 click==6.7                # via pip-tools
-decorator==4.1.2          # via ipython, traitlets
+decorator==4.3.0          # via ipython, traitlets
 django-debug-toolbar==1.9.1
-django-nested-admin==3.0.21
+django-storages==1.6.6
 django-taggit==0.22.2
-django==2.0
+django==2.0.5
+docutils==0.14            # via botocore
 first==2.0.1              # via pip-tools
 ipython-genutils==0.2.0   # via traitlets
-ipython==6.2.1
-jedi==0.11.1              # via ipython
+ipython==6.3.1
+jedi==0.12.0              # via ipython
+jmespath==0.9.3           # via boto3, botocore
 mistune==0.8.3
-olefile==0.44             # via pillow
-parso==0.1.1              # via jedi
-pexpect==4.3.1            # via ipython
+parso==0.2.0              # via jedi
+pexpect==4.5.0            # via ipython
 pickleshare==0.7.4        # via ipython
-pillow==4.3.0
-pip-tools==1.11.0
+pillow==5.1.0
+pip-tools==2.0.2
 prompt-toolkit==1.0.15    # via ipython
-psycopg2==2.7.3.2
+psycopg2==2.7.4
 ptyprocess==0.5.2         # via pexpect
 pygments==2.2.0           # via ipython
-pyprind==2.11.1
-python-monkey-business==1.0.0  # via django-nested-admin
-pytz==2017.3              # via django
+pyprind==2.11.2
+python-dateutil==2.7.3    # via botocore
+pytz==2018.4              # via django
+s3transfer==0.1.13        # via boto3
 simplegeneric==0.8.1      # via ipython
-six==1.11.0               # via pip-tools, prompt-toolkit, python-monkey-business, traitlets
+six==1.11.0               # via pip-tools, prompt-toolkit, python-dateutil, traitlets
 sqlparse==0.2.4           # via django-debug-toolbar
 traitlets==4.3.2          # via ipython
 wcwidth==0.1.7            # via prompt-toolkit

@@ -12,6 +12,7 @@ __pycache__/
 /.idea/**/tasks.xml
 /.idea/dataSources/
 /.idea/dictionaries
+/.idea/libraries/Generated_files.xml
 
 # development-time media files
 /media/

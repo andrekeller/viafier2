@@ -3,10 +3,17 @@ import uuid
 from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.core.files.uploadedfile import SimpleUploadedFile
+
+from PIL import Image
+from io import BytesIO
 
 
 def gallery_pictures_uuid(instance, filename):
     return 'gallery/pictures/%s.jpg' % uuid.uuid1()
+
+def gallery_thumbs_uuid(instance, filename):
+    return 'gallery/thumbs/{}/{}.jpg'.format(filename, instance.size)
 
 
 class Author(models.Model):
@@ -58,6 +65,26 @@ class License(models.Model):
         return "%s" % self.name
 
 
+class Thumbnail(models.Model):
+    picture = models.ForeignKey(
+        on_delete=models.CASCADE,
+        to='gallery.Picture',
+        verbose_name=_('picture'),
+        related_name='thumbnails',
+    )
+    thumbnail = models.ImageField(
+        upload_to=gallery_thumbs_uuid,
+        verbose_name=_('thumbnail'),
+    )
+    size = models.IntegerField(
+        verbose_name=_('size')
+    )
+
+    class Meta:
+        verbose_name = _('thumbnail')
+        verbose_name_plural = _('thumbnails')
+
+
 class Picture(models.Model):
     author = models.ForeignKey(
         blank=True,
@@ -98,22 +125,41 @@ class Picture(models.Model):
         else:
             return super().__str__()
 
+    def save(self, **kwargs):
+        super().save(**kwargs)
+        original = Image.open(BytesIO(self.picture.read()))
+        if original.mode not in ('L', 'RGB'):
+            original = original.convert('RGB')
+        for size in settings.THUMBNAIL_SIZES:
+            thumb = original.copy()
+            thumb.thumbnail((size, size), Image.ANTIALIAS)
+
+            thumb_memorybuffer = BytesIO()
+            thumb.save(thumb_memorybuffer, 'jpeg', quality=96)
+            thumb_memorybuffer.seek(0)
+
+            thumbnail_uploaded_file = SimpleUploadedFile(
+                name=self.picture.name.rsplit('.')[0],
+                content=thumb_memorybuffer.read(),
+                content_type='image/jpeg',
+            )
+            Thumbnail.objects.get_or_create(
+                picture=self,
+                size=size,
+                defaults={'thumbnail': thumbnail_uploaded_file},
+            )
+            thumb_memorybuffer.close()
+
     @property
     def src(self):
-        return '{media_url}gallery/pictures/{uuid}.jpg'.format(
-            media_url=settings.MEDIA_URL,
-            uuid=str(self),
-        )
+        return self.picture.url
 
     @property
     def srcset(self):
         srcset = []
-        for size in sorted(settings.THUMBNAIL_SIZES):
-            srcset.append(
-                '{media_url}gallery/thumbs/{uuid}/{size}.jpg {size}w'.format(
-                    media_url=settings.MEDIA_URL,
-                    uuid=str(self),
-                    size=size,
-                )
+        for thumbnail in self.thumbnails.all():
+            srcset.append('{url} {size}w'.format(
+                url=thumbnail.thumbnail.url,
+                size=thumbnail.size)
             )
         return ", ".join(srcset)
