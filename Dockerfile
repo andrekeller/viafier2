@@ -1,8 +1,8 @@
 FROM alpine:3.7
 
-COPY viafier2 /srv/viafier2
-COPY requirements.txt /srv/viafier2/requirements.txt
-COPY docker-entrypoint.sh /docker-entrypoint.sh
+RUN mkdir /app
+COPY requirements.txt /app/requirements.txt
+COPY docker-entrypoint.sh /app/docker-entrypoint.sh
 
 RUN apk --no-cache add dumb-init python3 pcre mailcap libpq libxml2 \
                        libxslt libressl libjpeg-turbo bash gettext && \
@@ -12,13 +12,14 @@ RUN apk --no-cache add dumb-init python3 pcre mailcap libpq libxml2 \
                        libjpeg-turbo-dev pcre-dev && \
     python3 -m ensurepip --default-pip && \
     pip3 install -U pip && \
-    pip3 install -r /srv/viafier2/requirements.txt && \
+    pip3 install -r /app/requirements.txt && \
     apk del build-deps
 
-RUN /srv/viafier2/manage.py compilemessages -l de
+COPY viafier2 /app/viafier2
+RUN /app/viafier2/manage.py compilemessages -l de
 
 USER nobody
-EXPOSE 8000
 
-ENTRYPOINT ["dumb-init", "/docker-entrypoint.sh"]
+EXPOSE 8000
+ENTRYPOINT ["dumb-init", "/app/docker-entrypoint.sh"]
 CMD ["viafier2"]
