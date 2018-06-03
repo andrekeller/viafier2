@@ -19,6 +19,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
 from django.urls import include
 from django.conf.urls.static import static
+from common.views import IndexView
 
 urlpatterns = [
 
@@ -26,6 +27,7 @@ urlpatterns = [
     path('login/', LoginView.as_view(template_name='login.html'), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('inventory/', include('inventory.urls')),
+    path('', IndexView.as_view(), name='home'),
 ]
 
 if settings.DEBUG:

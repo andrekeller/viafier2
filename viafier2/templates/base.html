@@ -27,17 +27,14 @@
     {% endblock %}
 </div>
 <footer>
-    &copy;&nbsp;{% now "Y" %}
-    <a href="mailto:andre@viafier.com">Andr&eacute; Keller</a>
-    &nbsp;|&nbsp;
-    <a href="#">Impressum</a>
+    <a href="mailto:feedback@viafier.com">Feedback</a>
     {% if user.is_authenticated %}
         &nbsp;|&nbsp;
         Angemeldet als <strong>{{ user.username }}</strong>
-         |&nbsp;
+        &nbsp;|&nbsp;
         <a href="{% url 'logout' %}">abmelden</a>
     {% else %}
-        |&nbsp;
+        &nbsp;|&nbsp;
         <a href="{% url 'login' %}">anmelden</a>
     {% endif %}
 </footer>
