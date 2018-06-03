@@ -12,7 +12,7 @@ if [[ $1 = 'viafier2' ]]; then
 
     /srv/viafier2/manage.py collectstatic --noinput
     exec /usr/bin/uwsgi \
-         --chdir /srv/viafier \
+         --chdir /srv/viafier2 \
          --die-on-term \
          --need-app \
          --env DJANGO_SETTINGS_MODULE=viafier2.settings \

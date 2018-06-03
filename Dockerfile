@@ -15,7 +15,7 @@ RUN apk --no-cache add dumb-init python3 pcre mailcap libpq libxml2 \
     pip3 install -r /srv/viafier2/requirements.txt && \
     apk del build-deps
 
-RUN /srv/viafier2/manage.py compilemessages
+RUN /srv/viafier2/manage.py compilemessages -l de
 
 USER nobody
 EXPOSE 8000
