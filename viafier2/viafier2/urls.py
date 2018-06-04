@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf import settings
 from django.contrib import admin
+from django.http import HttpResponse
 from django.urls import path
 from django.urls import include
 from django.conf.urls.static import static
@@ -24,6 +25,7 @@ urlpatterns = [
     path('taggit/', include('taggit_selectize.urls')),
     path('admin/', admin.site.urls),
     path('inventory/', include('inventory.urls')),
+    path('robots.txt', lambda r: HttpResponse("User-agent: *\nDisallow: /", content_type="text/plain")),
     path('', include('common.urls')),
 ]
 
