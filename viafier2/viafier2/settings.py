@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'storages',
     'taggit',
+    'taggit_selectize',
     # viafier2
     'common',
     'gallery',
@@ -172,3 +173,6 @@ else:
 
 CSRF_COOKIE_SECURE = any2bool(getenv('DJANGO_CSRF_COOKIE_SECURE', 'no'))
 SESSION_COOKIE_SECURE = any2bool(getenv('DJANGO_SESSION_COOKIE_SECURE', 'no'))
+
+TAGGIT_TAGS_FROM_STRING = 'taggit_selectize.utils.parse_tags'
+TAGGIT_STRING_FROM_TAGS = 'taggit_selectize.utils.join_tags'

@@ -38,6 +38,8 @@ class AssemblyAdmin(admin.ModelAdmin):
 
 class ConfigurationAdmin(admin.ModelAdmin):
     autocomplete_fields = ['vehicle', 'article']
+    search_fields = ['article__number', 'vehicle__vehicle__number']
+    list_per_page = 15
     inlines = [
         AssemblyInline,
     ]

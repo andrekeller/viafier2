@@ -24,4 +24,5 @@ pytz==2018.4              # via django
 s3transfer==0.1.13        # via boto3
 six==1.11.0               # via pip-tools, python-dateutil
 sqlparse==0.2.4           # via django-debug-toolbar
+taggit-selectize==2.5.0
 uwsgi==2.0.17

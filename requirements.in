@@ -3,6 +3,7 @@ Django
 django-debug-toolbar
 django-storages
 django-taggit
+taggit-selectize
 mistune
 pillow
 pip-tools

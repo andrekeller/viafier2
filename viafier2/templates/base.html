@@ -17,7 +17,7 @@
 <nav id="main">
     <ul>
         <li class="nav-title"
-        ><div>&colon; &colon;</div><a href="{% url 'home' %}">viafier.com</a></li>
+        ><div>&colon; &colon;</div><a href="{% url 'common:home' %}">viafier.com</a></li>
     </ul>
     {% block subnav %}
     {% endblock %}
@@ -35,10 +35,10 @@
         &nbsp;|&nbsp;
         Angemeldet als <strong>{{ user.username }}</strong>
         &nbsp;|&nbsp;
-        <a href="{% url 'logout' %}">abmelden</a>
+        <a href="{% url 'common:logout' %}">abmelden</a>
     {% else %}
         &nbsp;|&nbsp;
-        <a href="{% url 'login' %}">anmelden</a>
+        <a href="{% url 'common:login' %}">anmelden</a>
     {% endif %}
 </footer>
 <script src="{% static 'vendor/jquery.min.js' %}"></script>
