@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-01 19:49+0000\n"
+"POT-Creation-Date: 2018-06-07 18:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,50 +22,62 @@ msgstr ""
 msgid "gallery"
 msgstr "Bildgalerie"
 
-#: gallery/models.py:17 gallery/models.py:29 gallery/models.py:68
+#: gallery/models.py:24 gallery/models.py:36 gallery/models.py:95
 msgid "author"
 msgstr "Autor"
 
-#: gallery/models.py:24
+#: gallery/models.py:31
 msgid "affiliation"
 msgstr "Affiliation"
 
-#: gallery/models.py:30
+#: gallery/models.py:37
 msgid "authors"
 msgstr "Autoren"
 
-#: gallery/models.py:44
+#: gallery/models.py:51
 msgid "license name"
 msgstr "Lizenzbezeichnung"
 
-#: gallery/models.py:48
+#: gallery/models.py:55
 msgid "url"
 msgstr "Link"
 
-#: gallery/models.py:49
+#: gallery/models.py:56
 msgid "url to license text"
 msgstr "Link zum Lizenztext"
 
-#: gallery/models.py:54 gallery/models.py:76
+#: gallery/models.py:61 gallery/models.py:103
 msgid "license"
 msgstr "Bildlizenz"
 
-#: gallery/models.py:55
+#: gallery/models.py:62
 msgid "licenses"
 msgstr "Bildlizenzen"
 
-#: gallery/models.py:82
-msgid "link to original picture"
-msgstr "Link zum Originalbild"
-
-#: gallery/models.py:83
-msgid "source"
-msgstr "Quelle"
-
-#: gallery/models.py:88 gallery/models.py:92
+#: gallery/models.py:72 gallery/models.py:115 gallery/models.py:119
 msgid "picture"
 msgstr "Bild"
 
-#: gallery/models.py:93
+#: gallery/models.py:77 gallery/models.py:84
+msgid "thumbnail"
+msgstr "Thumbnail"
+
+#: gallery/models.py:80
+msgid "size"
+msgstr "Grösse"
+
+#: gallery/models.py:85
+msgid "thumbnails"
+msgstr "Thumbnails"
+
+#: gallery/models.py:109
+msgid "link to original picture"
+msgstr "Link zum Originalbild"
+
+#: gallery/models.py:110
+msgid "source"
+msgstr "Quelle"
+
+#: gallery/models.py:120
 msgid "pictures"
 msgstr "Bilder"

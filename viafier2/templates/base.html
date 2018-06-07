@@ -18,6 +18,12 @@
     <ul>
         <li class="nav-title"
         ><div>&colon; &colon;</div><a href="{% url 'common:home' %}">viafier.com</a></li>
+        <li {% navactive 'inventory:rollingstock' %}
+        ><a href="{% url 'inventory:rollingstock' %}">Rollmaterial</a></li>
+        {% if user.is_staff %}
+        <li {% navactive 'inventory:index' %}
+        ><a href="{% url 'inventory:index' %}">Inventar</a></li>
+        {% endif %}
     </ul>
     {% block subnav %}
     {% endblock %}
@@ -27,18 +33,18 @@
     {% endblock %}
 </div>
 <footer>
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
-    >CC BY-NC-SA 4.0</a>
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/"
+    >CC BY-SA 4.0</a>
     &nbsp;|&nbsp;
     <a href="mailto:feedback@viafier.com">Feedback</a>
     {% if user.is_authenticated %}
         &nbsp;|&nbsp;
         Angemeldet als <strong>{{ user.username }}</strong>
         &nbsp;|&nbsp;
-        <a href="{% url 'common:logout' %}">abmelden</a>
+        <a href="{% url 'logout' %}">abmelden</a>
     {% else %}
         &nbsp;|&nbsp;
-        <a href="{% url 'common:login' %}">anmelden</a>
+        <a href="{% url 'login' %}">anmelden</a>
     {% endif %}
 </footer>
 <script src="{% static 'vendor/jquery.min.js' %}"></script>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-01 19:49+0000\n"
+"POT-Creation-Date: 2018-06-07 18:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,87 +22,92 @@ msgstr ""
 msgid "inventory"
 msgstr "Inventar"
 
-#: inventory/models.py:19
+#: inventory/models.py:21
 msgid "article number"
 msgstr "Artikelnummer"
 
-#: inventory/models.py:25 inventory/models.py:195
+#: inventory/models.py:27 inventory/models.py:199
 msgid "supports markdown"
 msgstr "unterstützt Markdown"
 
-#: inventory/models.py:26 inventory/models.py:196
+#: inventory/models.py:28 inventory/models.py:200
 msgid "description"
 msgstr "Beschreibung"
 
-#: inventory/models.py:33
+#: inventory/models.py:35
 msgid "manufacturer"
 msgstr "Hersteller"
 
-#: inventory/models.py:42
+#: inventory/models.py:44
 msgid "vendor"
 msgstr "Verkäufer"
 
-#: inventory/models.py:48
+#: inventory/models.py:50
 msgid "purchase date"
 msgstr "Kaufdatum"
 
-#: inventory/models.py:56
+#: inventory/models.py:58
 msgid "price"
 msgstr "Kaufpreis"
 
-#: inventory/models.py:64 inventory/models.py:173
+#: inventory/models.py:66 inventory/models.py:177
 msgid "article"
 msgstr "Artikel"
 
-#: inventory/models.py:65
+#: inventory/models.py:67
 msgid "articles"
 msgstr "Artikel"
 
-#: inventory/models.py:98 inventory/models.py:121
+#: inventory/models.py:100 inventory/models.py:123
 msgid "assembly"
 msgstr "Aufbau"
 
-#: inventory/models.py:105 inventory/models.py:203
+#: inventory/models.py:107 inventory/models.py:208
 msgid "configuration"
 msgstr "Konfiguration"
 
-#: inventory/models.py:114 inventory/models.py:182 inventory/models.py:236
+#: inventory/models.py:116 inventory/models.py:186 inventory/models.py:241
 msgid "picture"
 msgstr "Bild"
 
-#: inventory/models.py:122
+#: inventory/models.py:124
 msgid "assemblies"
 msgstr "Aufbauten"
 
-#: inventory/models.py:133
+#: inventory/models.py:135
 msgid "company name"
 msgstr "Firmenname"
 
-#: inventory/models.py:139
+#: inventory/models.py:141
 msgid "website"
 msgstr "Webseite"
 
-#: inventory/models.py:144
+#: inventory/models.py:146
 msgid "company"
 msgstr "Firma"
 
-#: inventory/models.py:145
+#: inventory/models.py:147
 msgid "companies"
 msgstr "Firmen"
 
-#: inventory/models.py:189 inventory/models.py:227 inventory/models.py:243
+#: inventory/models.py:193 inventory/models.py:232 inventory/models.py:248
 msgid "vehicle"
 msgstr "Fahrzeug"
 
-#: inventory/models.py:204
+#: inventory/models.py:209
 msgid "configurations"
 msgstr "Konfigurationen"
 
-#: inventory/models.py:244
+#: inventory/models.py:249
 msgid "vehicles"
 msgstr "Fahrzeuge"
 
-#: inventory/templates/inventory/index.html:36
-#: inventory/templates/inventory/index.html:48
+#: inventory/templates/inventory/index.html:47
+#: inventory/templates/inventory/index.html:85
 msgid "unknown"
 msgstr "unbekannt"
+
+#: inventory/templates/inventory/index.html:50
+#: inventory/templates/inventory/index.html:88
+msgid "private sale"
+msgstr "Privatverkauf"

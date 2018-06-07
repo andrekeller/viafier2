@@ -99,6 +99,13 @@ class VehicleKlass(models.Model):
         # translation
         verbose_name=_('class'),
     )
+    variant = models.CharField(
+        blank=True,
+        max_length=255,
+        null=True,
+        # translation
+        verbose_name=_('variant'),
+    )
     revision = models.CharField(
         blank=True,
         max_length=255,
@@ -130,12 +137,14 @@ class VehicleKlass(models.Model):
         ordering = ('operator', 'klass',)
         verbose_name = _('vehicle class')
         verbose_name_plural = _('vehicle classes')
-        unique_together = ('klass', 'revision')
+        unique_together = ('klass', 'revision', 'variant')
 
     def __str__(self):
         str_repr = "{} {}".format(self.operator.abbrev, self.klass)
         if self.revision and not self.revision_hidden:
             str_repr = "{} {}".format(str_repr, self.revision)
+        if self.variant:
+            str_repr = "{} ({})".format(str_repr, self.variant)
         return str_repr
 
     @property

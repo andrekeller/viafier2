@@ -166,7 +166,8 @@ STATICFILES_DIRS = (
     Path(BASE_DIR, 'static'),
 )
 if 'static' in S3_BACKENDS:
-    STATICFILES_STORAGE = 'viafier2.s3storages.StaticStorage'
+    #STATICFILES_STORAGE = 'viafier2.s3storages.StaticStorage'
+    pass
 else:
     STATIC_ROOT = getenv('DJANGO_STATIC_ROOT', Path(BASE_DIR.parents[0], 'static'))
 

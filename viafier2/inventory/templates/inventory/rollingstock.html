@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load navigation %}
+{% block subnav %}
+    <nav id="sub">
+        <ul>
+            <li {% navactive 'inventory:rollingstock-locomotives' %}
+            ><a href="{% url 'inventory:rollingstock-locomotives' %}">Lokomotiven</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+{% block content %}
+    <h1>Rollmaterial</h1>
+{% endblock %}
