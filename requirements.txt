@@ -4,25 +4,25 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
-boto3==1.7.31
-botocore==1.10.31         # via boto3, s3transfer
+boto3==1.7.54
+botocore==1.10.54         # via boto3, s3transfer
 click==6.7                # via pip-tools
 django-debug-toolbar==1.9.1
 django-storages==1.6.6
 django-taggit==0.22.2
-django==2.0.6
+django==2.0.7
 docutils==0.14            # via botocore
 first==2.0.1              # via pip-tools
 jmespath==0.9.3           # via boto3, botocore
 mistune==0.8.3
-pillow==5.1.0
+pillow==5.2.0
 pip-tools==2.0.2
-psycopg2==2.7.4
+psycopg2==2.7.5
 pyprind==2.11.2
 python-dateutil==2.7.3    # via botocore
-pytz==2018.4              # via django
+pytz==2018.5              # via django
 s3transfer==0.1.13        # via boto3
 six==1.11.0               # via pip-tools, python-dateutil
 sqlparse==0.2.4           # via django-debug-toolbar
 taggit-selectize==2.5.0
-uwsgi==2.0.17
+uwsgi==2.0.17.1
