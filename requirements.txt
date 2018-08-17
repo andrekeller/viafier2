@@ -4,13 +4,13 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
-boto3==1.7.54
-botocore==1.10.54         # via boto3, s3transfer
+boto3==1.7.79
+botocore==1.10.79         # via boto3, s3transfer
 click==6.7                # via pip-tools
 django-debug-toolbar==1.9.1
 django-storages==1.6.6
-django-taggit==0.22.2
-django==2.0.7
+django-taggit==0.23.0
+django==2.1
 docutils==0.14            # via botocore
 first==2.0.1              # via pip-tools
 jmespath==0.9.3           # via boto3, botocore
