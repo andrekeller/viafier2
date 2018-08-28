@@ -16,7 +16,7 @@ RUN apk --no-cache add dumb-init python3 pcre mailcap libpq libxml2 \
     apk del build-deps
 
 COPY viafier2 /app/viafier2
-RUN /app/viafier2/manage.py compilemessages -l de
+RUN pipenv run viafier2/manage.py compilemessages -l de
 
 USER nobody
 
