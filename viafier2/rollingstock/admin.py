@@ -10,8 +10,13 @@ class VehicleAdmin(admin.ModelAdmin):
     autocomplete_fields = ['klass']
     search_fields = ['klass__klass', 'klass__operator__name', 'klass__operator__abbrev', 'number']
 
+
 class VehicleKlassAdmin(admin.ModelAdmin):
+    prepopulated_fields = {
+        "slug": ("klass", "revision", "variant"),
+    }
     search_fields = ['klass', 'operator__name', 'operator__abbrev']
+
 
 admin.site.register(Assembly)
 admin.site.register(AssemblyType)

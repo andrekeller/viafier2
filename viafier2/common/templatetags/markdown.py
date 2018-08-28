@@ -10,4 +10,4 @@ def markdown(value):
     if value is None:
         return None
     parser = mistune.Markdown()
-    return mark_safe(parser(value))
+    return mark_safe(f'<div class="markdown">{parser(value)}</div>')

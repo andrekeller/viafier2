@@ -1,0 +1,16 @@
+{% extends 'inventory/rollingstock/engines.html' %}
+{% load markdown %}
+
+
+{% block content %}
+    <h1>{{ klass.html }}</h1>
+    <table>
+    <tbody>
+    {{ klass.description|markdown }}
+    </tbody>
+    </table>
+    {% for vehicle in vehicles %}
+        <h2>{{ vehicle.html }}</h2>
+        <h3>{{ vehicle.configurations.article }}</h3>
+    {% endfor %}
+{% endblock %}

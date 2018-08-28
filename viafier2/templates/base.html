@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>viafier.com</title>
+    <title>{% block html_title %}viafier.com{% endblock %}</title>
 
     <link href="{% static 'vendor/normalize.min.css' %}" rel="stylesheet">
     <link href="{% static 'vendor/source-sans-pro/source-sans-pro.min.css' %}" rel="stylesheet">
@@ -21,8 +21,6 @@
         <li {% navactive 'inventory:rollingstock' %}
         ><a href="{% url 'inventory:rollingstock' %}">Rollmaterial</a></li>
         {% if user.is_staff %}
-        <li {% navactive 'inventory:index' %}
-        ><a href="{% url 'inventory:index' %}">Inventar</a></li>
         {% endif %}
     </ul>
     {% block subnav %}
@@ -42,6 +40,10 @@
         Angemeldet als <strong>{{ user.username }}</strong>
         &nbsp;|&nbsp;
         <a href="{% url 'logout' %}">abmelden</a>
+        {% if user.is_staff %}
+            &nbsp;|&nbsp;
+            <a href="{% url 'inventory:index' %}">Inventar</a>
+        {% endif %}
     {% else %}
         &nbsp;|&nbsp;
         <a href="{% url 'login' %}">anmelden</a>

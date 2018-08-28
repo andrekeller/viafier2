@@ -169,6 +169,25 @@ class ConfigurationManager(models.Manager):
 
 
 class Configuration(models.Model):
+
+    UNCATEGORIZED = 0
+    ENGINE_CATEGORY = 1
+    SHUNTING_ENGINE_CATEGORY = 2
+    SERVICE_ENGINE_CATEGORY = 3
+    MOTOR_COACH_CATEGORY = 4
+    FREIGHT_WAGON_CATEGORY = 5
+    COACH_CATEGORY = 6
+
+    CATEGORY_CHOICES = (
+        (UNCATEGORIZED, _('uncategorized')),
+        (ENGINE_CATEGORY, _('engine')),
+        (SHUNTING_ENGINE_CATEGORY, _('shunting engine')),
+        (SERVICE_ENGINE_CATEGORY, _('service engine')),
+        (MOTOR_COACH_CATEGORY, _('motor coach')),
+        (FREIGHT_WAGON_CATEGORY, _('freight wagon')),
+        (COACH_CATEGORY, _('coach')),
+    )
+
     article = models.ForeignKey(
         on_delete=models.CASCADE,
         related_name='configurations',
@@ -199,9 +218,16 @@ class Configuration(models.Model):
         help_text=_('supports markdown'),
         verbose_name=_('description'),
     )
+    category = models.IntegerField(
+        choices=CATEGORY_CHOICES,
+        default=UNCATEGORIZED,
+        verbose_name=_('category'),
+    )
 
     objects = ConfigurationManager()
-    tags = TaggableManager()
+    tags = TaggableManager(
+        blank=True,
+    )
 
     class Meta:
         ordering = ('vehicle',)

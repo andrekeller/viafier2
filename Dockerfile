@@ -1,18 +1,18 @@
-FROM alpine:3.7
+FROM alpine:3.8
 
 RUN mkdir /app
-COPY requirements.txt /app/requirements.txt
+COPY Pipfile /app/Pipfile
+COPY Pipfile.lock /app/Pipfile.lock
 COPY docker-entrypoint.sh /app/docker-entrypoint.sh
 
 RUN apk --no-cache add dumb-init python3 pcre mailcap libpq libxml2 \
-                       libxslt libressl libjpeg-turbo bash gettext && \
+                       libxslt libressl libjpeg-turbo bash gettext git && \
     apk --no-cache add --virtual build-deps \
                        python3-dev build-base postgresql-dev libxml2-dev \
                        libxslt-dev linux-headers libressl-dev \
                        libjpeg-turbo-dev pcre-dev && \
-    python3 -m ensurepip --default-pip && \
-    pip3 install -U pip && \
-    pip3 install -r /app/requirements.txt && \
+    pip3 install pipenv && \
+    cd /app && pipenv sync && \
     apk del build-deps
 
 COPY viafier2 /app/viafier2

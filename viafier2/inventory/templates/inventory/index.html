@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 {% load currency %}
+
+{% block html_title %}
+    {{ block.super }} - Inventar
+{% endblock %}
+
 {% block content %}
     <h1>Inventar</h1>
     <div style="overflow-x: auto; padding: 1px;"><table style="table-layout: fixed">
@@ -113,62 +118,4 @@
         </tbody>
     </table>
     </div>
-    {% comment %}
-    <table>
-        <thead>
-        <tr>
-            <th>Hersteller</th>
-            <th>Artikelnummer</th>
-            <th>Artikeltyp</th>
-            <th>Beschreibung</th>
-            <th>Kaufdatum</th>
-            <th>Kaufpreis</th>
-            <th>Bild</th>
-        </tr>
-        </thead>
-        <tbody>
-
-        </tbody>
-        {% for article in article_list %}
-            {% cycle 'class="zebra"' '' as zebra silent %}
-            <tr style="border-top: 1px solid #232323" {{ zebra }}>
-                {% with inventory_count=article.inventory_count %}
-                    <td rowspan="{{ inventory_count }}">{{ article.manufacturer }}</td>
-                    <td rowspan="{{ inventory_count }}">{{ article.number }}</td>
-                    <td>{{ article.vehicle.klass.type.all|join:"<br />" }}</td>
-                    <td>{{ article.vehicle|default_if_none:article.set }}</td>
-                    <td rowspan="{{ inventory_count }}">{{ article.purchased|date:"d.m.Y" }}</td>
-                    <td rowspan="{{ inventory_count }}">{{ article.price }}</td>
-                    <td style="max-width: 350px; padding: 0 0 0 0" rowspan="{{ inventory_count }}">
-                        {% if article.picture %}
-                            <img style="max-width: 100%" src="{{ article.picture.src }}" srcset="{{ article.picture.srcset }}">
-                        {% else %}
-                            &nbsp;
-                        {% endif %}
-                    </td>
-                {% endwith %}
-                {% for set_article in article.articles %}
-                    <tr {{ zebra }} style="border-top: 1px solid {{ zebra|yesno:'#ffffff,#d4d4d4' }}">
-                        <td>{{ set_article.vehicle.klass.type.all|join:"<br />" }}</td>
-                        <td>{{ set_article.vehicle }}</td>
-                    </tr>
-                    {% for unit in set_article.units.all %}
-                        <tr {{ zebra }}>
-                            <td>{{ unit.type }}</td>
-                            <td>{{ unit.name }}{% if unit.number %} {{ unit.number }}{% endif %}</td>
-                        </tr>
-                    {% endfor %}
-                {% endfor %}
-            {% for unit in article.units.all %}
-                <tr {{ zebra }}>
-                    <td>{{ unit.type }}</td>
-                    <td>{{ unit.name }}{% if unit.number %} {{ unit.number }}{% endif %}</td>
-                </tr>
-            {% endfor %}
-            </tr>
-        {% endfor %}
-    </table>
-    </table>
-    </table>
-    {% endcomment %}
 {% endblock %}

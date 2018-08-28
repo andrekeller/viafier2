@@ -1,4 +1,5 @@
 from collections import defaultdict
+from django.urls import reverse
 from django.db import models
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
@@ -112,6 +113,11 @@ class VehicleKlass(models.Model):
         null=True,
         # translation
         verbose_name=_('revision'),
+    )
+    slug = models.SlugField(
+        null=True,
+        unique=True,
+        verbose_name=_('slug'),
     )
     revision_hidden = models.BooleanField(
         default=False,

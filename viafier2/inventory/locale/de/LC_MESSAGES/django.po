@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 18:38+0000\n"
+"POT-Creation-Date: 2018-08-26 14:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,11 +26,11 @@ msgstr "Inventar"
 msgid "article number"
 msgstr "Artikelnummer"
 
-#: inventory/models.py:27 inventory/models.py:199
+#: inventory/models.py:27 inventory/models.py:218
 msgid "supports markdown"
 msgstr "unterstützt Markdown"
 
-#: inventory/models.py:28 inventory/models.py:200
+#: inventory/models.py:28 inventory/models.py:219
 msgid "description"
 msgstr "Beschreibung"
 
@@ -50,7 +50,7 @@ msgstr "Kaufdatum"
 msgid "price"
 msgstr "Kaufpreis"
 
-#: inventory/models.py:66 inventory/models.py:177
+#: inventory/models.py:66 inventory/models.py:196
 msgid "article"
 msgstr "Artikel"
 
@@ -62,11 +62,11 @@ msgstr "Artikel"
 msgid "assembly"
 msgstr "Aufbau"
 
-#: inventory/models.py:107 inventory/models.py:208
+#: inventory/models.py:107 inventory/models.py:234
 msgid "configuration"
 msgstr "Konfiguration"
 
-#: inventory/models.py:116 inventory/models.py:186 inventory/models.py:241
+#: inventory/models.py:116 inventory/models.py:205 inventory/models.py:267
 msgid "picture"
 msgstr "Bild"
 
@@ -90,15 +90,47 @@ msgstr "Firma"
 msgid "companies"
 msgstr "Firmen"
 
-#: inventory/models.py:193 inventory/models.py:232 inventory/models.py:248
+#: inventory/models.py:182
+msgid "uncategorized"
+msgstr "nicht kategorisiert"
+
+#: inventory/models.py:183
+msgid "engine"
+msgstr "Streckenlokomotive"
+
+#: inventory/models.py:184
+msgid "shunting engine"
+msgstr "Rangierlokomotive"
+
+#: inventory/models.py:185
+msgid "service engine"
+msgstr "Bahndienstlokomotive"
+
+#: inventory/models.py:186
+msgid "motor coach"
+msgstr "Triebwagen / Triebzug"
+
+#: inventory/models.py:187
+msgid "freight wagon"
+msgstr "Güterwagen"
+
+#: inventory/models.py:188
+msgid "coach"
+msgstr "Personen- und Gepäckwagen"
+
+#: inventory/models.py:212 inventory/models.py:258 inventory/models.py:274
 msgid "vehicle"
 msgstr "Fahrzeug"
 
-#: inventory/models.py:209
+#: inventory/models.py:224
+msgid "category"
+msgstr "Kategorie"
+
+#: inventory/models.py:235
 msgid "configurations"
 msgstr "Konfigurationen"
 
-#: inventory/models.py:249
+#: inventory/models.py:275
 msgid "vehicles"
 msgstr "Fahrzeuge"
 
@@ -111,3 +143,38 @@ msgstr "unbekannt"
 #: inventory/templates/inventory/index.html:88
 msgid "private sale"
 msgstr "Privatverkauf"
+
+#: inventory/urls.py:12
+msgctxt "url"
+msgid "rollingstock/"
+msgstr "rollmaterial/"
+
+#: inventory/urls.py:13
+msgctxt "url"
+msgid "rollingstock/coaches"
+msgstr "rollmaterial/personen-und-gepaeckwagen"
+
+#: inventory/urls.py:14
+msgctxt "url"
+msgid "rollingstock/engines"
+msgstr "rollmaterial/streckenloks"
+
+#: inventory/urls.py:15
+msgctxt "url"
+msgid "rollingstock/engines/<slug:slug>"
+msgstr "rollmaterial/streckenloks/<slug:slug>"
+
+#: inventory/urls.py:16
+msgctxt "url"
+msgid "rollingstock/freight-wagons"
+msgstr "rollmaterial/gueterwagen"
+
+#: inventory/urls.py:17
+msgctxt "url"
+msgid "rollingstock/motor-coaches"
+msgstr "rollmaterial/triebwagen-und-zuege"
+
+#: inventory/urls.py:18
+msgctxt "url"
+msgid "rollingstock/service-engines"
+msgstr "rollmaterial/bahndienst-und-rangierloks"

@@ -1,12 +1,14 @@
 {% extends 'inventory/rollingstock.html' %}
 {% load markdown %}
+{% load navigation %}
 
 {% block subnav %}
 {{ block.super }}
 <nav id="subsub">
     <ul>
         {% for klass in klasses %}
-            <li><a href="#">{{ klass.html }}</a></li>
+            <li {% navactive_exact 'inventory:rollingstock-motorcoaches-class' klass.slug %}
+            ><a href="{% url 'inventory:rollingstock-motorcoaches-class' klass.slug %}">{{ klass.html }}</a></li>
         {% endfor %}
     </ul>
 </nav>

@@ -1,0 +1,18 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+"boto3" = "*"
+django-debug-toolbar = "*"
+django-storages = "*"
+django-taggit = "*"
+taggit-selectize = {editable = true, git = "git://github.com/chhantyal/taggit-selectize.git"}
+mistune = "*"
+pip-tools = "*"
+"psycopg2" = "*"
+Django = "*"
+Pillow = "*"
+PyPrind = "*"
+uWSGI = "*"

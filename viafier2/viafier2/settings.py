@@ -44,6 +44,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    #'django.middleware.locale.LocaleMiddleware',
+    #'common.middleware.ForceLanguageMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -126,7 +128,7 @@ CURRENCY = 'CHF'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
-LOCALEPATHS = [
+LOCALE_PATHS = [
     Path(BASE_DIR, 'locale'),
 ]
 LANGUAGES = [

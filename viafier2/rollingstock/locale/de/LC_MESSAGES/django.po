@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-07 18:38+0000\n"
+"POT-Creation-Date: 2018-08-26 14:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,103 +22,107 @@ msgstr ""
 msgid "rollingstock"
 msgstr "Rollmaterial"
 
-#: rollingstock/models.py:11
+#: rollingstock/models.py:12
 msgid "assembly name"
 msgstr "Aufbaubezeichnung"
 
-#: rollingstock/models.py:18
+#: rollingstock/models.py:19
 msgid "assembly number"
 msgstr "Aufbaunummer"
 
-#: rollingstock/models.py:25
+#: rollingstock/models.py:26
 msgid "assembly type"
 msgstr "Aufbauart"
 
-#: rollingstock/models.py:34 rollingstock/models.py:195
+#: rollingstock/models.py:35 rollingstock/models.py:203
 msgid "picture"
 msgstr "Bild"
 
-#: rollingstock/models.py:39
+#: rollingstock/models.py:40
 msgid "Assembly"
 msgstr "Aufbau"
 
-#: rollingstock/models.py:40
+#: rollingstock/models.py:41
 msgid "Assemblies"
 msgstr "Aufbauten"
 
-#: rollingstock/models.py:61
+#: rollingstock/models.py:62
 msgid "assembly type name"
 msgstr "Aufbauartbezeichnung"
 
-#: rollingstock/models.py:66
+#: rollingstock/models.py:67
 msgid "Assembly type"
 msgstr "Aufbauart"
 
-#: rollingstock/models.py:67
+#: rollingstock/models.py:68
 msgid "Assembly types"
 msgstr "Aufbauarten"
 
-#: rollingstock/models.py:78
+#: rollingstock/models.py:79
 msgid "operator name"
 msgstr "Bahngesellschaft"
 
-#: rollingstock/models.py:84
+#: rollingstock/models.py:85
 msgid "abbreviated operator name"
 msgstr "Bahngesellschaft (Abkürzung)"
 
-#: rollingstock/models.py:89 rollingstock/models.py:127
+#: rollingstock/models.py:90 rollingstock/models.py:133
 msgid "operator"
 msgstr "Bahngesellschaft"
 
-#: rollingstock/models.py:90
+#: rollingstock/models.py:91
 msgid "operators"
 msgstr "Bahngesellschaften"
 
-#: rollingstock/models.py:100
+#: rollingstock/models.py:101
 msgid "class"
 msgstr "Baureihe"
 
-#: rollingstock/models.py:107
+#: rollingstock/models.py:108
 msgid "variant"
 msgstr "Variante"
 
-#: rollingstock/models.py:114
+#: rollingstock/models.py:115
 msgid "revision"
 msgstr "Revision"
 
-#: rollingstock/models.py:119
+#: rollingstock/models.py:120
+msgid "slug"
+msgstr ""
+
+#: rollingstock/models.py:125
 msgid "for classes that have a revision that is not displayed on the vehicle"
 msgstr ""
 "für Baureihen mit Revision welche nicht auf dem Fahrzeug angeschrieben ist"
 
-#: rollingstock/models.py:120
+#: rollingstock/models.py:126
 msgid "hide revision"
 msgstr "Revision verstecken"
 
-#: rollingstock/models.py:132 rollingstock/models.py:185
+#: rollingstock/models.py:138 rollingstock/models.py:193
 msgid "supports markdown"
 msgstr "unterstützt Markdown"
 
-#: rollingstock/models.py:133 rollingstock/models.py:186
+#: rollingstock/models.py:139 rollingstock/models.py:194
 msgid "description"
 msgstr "Beschreibung"
 
-#: rollingstock/models.py:138 rollingstock/models.py:172
+#: rollingstock/models.py:144 rollingstock/models.py:180
 msgid "vehicle class"
 msgstr "Baureihe"
 
-#: rollingstock/models.py:139
+#: rollingstock/models.py:145
 msgid "vehicle classes"
 msgstr "Baureihen"
 
-#: rollingstock/models.py:179
+#: rollingstock/models.py:187
 msgid "vehicle number"
 msgstr "Fahrzeugnummer"
 
-#: rollingstock/models.py:203
+#: rollingstock/models.py:211
 msgid "vehicle"
 msgstr "Fahrzeug"
 
-#: rollingstock/models.py:204
+#: rollingstock/models.py:212
 msgid "vehicles"
 msgstr "Fahrzeuge"

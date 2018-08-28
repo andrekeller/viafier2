@@ -1,0 +1,28 @@
+{% extends 'inventory/rollingstock.html' %}
+{% load markdown %}
+{% load navigation %}
+
+{% block html_title %}
+{{ block.super }} - Streckenloks
+{% endblock %}
+
+{% block subnav %}
+{{ block.super }}
+<nav id="subsub">
+    <ul>
+        {% for klass in klasses %}
+            <li {% navactive_exact 'inventory:rollingstock-engines-class' klass.slug %}
+            ><a href="{% url 'inventory:rollingstock-engines-class' klass.slug %}">{{ klass.html }}</a></li>
+        {% endfor %}
+    </ul>
+</nav>
+{% endblock %}
+
+
+{% block content %}
+    <h1>Baureihen</h1>
+    {% for klass in klasses %}
+        <h2><a href="{% url 'inventory:rollingstock-engines-class' klass.slug %}">{{ klass.html }}</a></h2>
+        {{ klass.description|markdown }}
+    {% endfor %}
+{% endblock %}
