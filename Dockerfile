@@ -3,7 +3,6 @@ FROM alpine:3.8
 RUN mkdir /app
 COPY requirements.txt /app/requirements.txt
 COPY docker-entrypoint.sh /app/docker-entrypoint.sh
-RUN chmod 0666 /app/Pipfile /app/Pipfile.lock
 
 RUN apk --no-cache add dumb-init python3 pcre mailcap libpq libxml2 \
                        libxslt libressl libjpeg-turbo bash gettext && \
