@@ -1,6 +1,9 @@
 {% extends 'inventory/rollingstock/engines.html' %}
 {% load markdown %}
 
+{% block html_title %}
+    {{ block.super }} - {{ klass }}
+{% endblock %}
 
 {% block content %}
     <h1>{{ klass.html }}</h1>
