@@ -12,15 +12,16 @@ if [[ $1 = 'viafier2' ]]; then
 
     /app/viafier2/manage.py collectstatic --noinput
     exec /usr/bin/uwsgi \
-         --chdir /app/viafier2 \
-         --die-on-term \
-         --need-app \
-         --env DJANGO_SETTINGS_MODULE=viafier2.settings \
-         --enable-threads \
-         --master \
-         --processes 2 \
-         --socket :8000 \
-         --wsgi-file viafier2/wsgi.py
+        --add-header "X-Viafier-Backend: ${HOSTNAME}" \
+        --chdir /app/viafier2 \
+        --die-on-term \
+        --need-app \
+        --env DJANGO_SETTINGS_MODULE=viafier2.settings \
+        --enable-threads \
+        --master \
+        --processes 2 \
+        --socket :8000 \
+        --wsgi-file viafier2/wsgi.py
 else
     exec "$@"
 fi
