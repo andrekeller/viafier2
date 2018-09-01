@@ -6,23 +6,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block html_title %}viafier.com{% endblock %}</title>
-
-    <link href="{% static 'vendor/normalize.min.css' %}" rel="stylesheet">
-    <link href="{% static 'vendor/source-sans-pro/source-sans-pro.min.css' %}" rel="stylesheet">
-    <link href="{% static 'vendor/source-sans-pro/source-serif-pro.min.css' %}" rel="stylesheet">
-    <link href="{% static 'vendor/lightbox2/css/lightbox.min.css' %}" rel="stylesheet">
-    <link href="{% static 'viafier.css' %}" rel="stylesheet">
-
+    <link href="{% static 'viafier.min.css' %}" rel="stylesheet">
 </head>
 <body>
 <nav id="main">
     <ul>
         <li class="nav-title"
-        ><div>&colon; &colon;</div><a href="{% url 'common:home' %}">viafier.com</a></li>
+        ><div>&colon;&nbsp;&colon;&nbsp;&colon;</div><a href="{% url 'common:home' %}">viafier.com</a></li>
         <li {% navactive 'inventory:rollingstock' %}
         ><a href="{% url 'inventory:rollingstock' %}">Rollmaterial</a></li>
-        {% if user.is_staff %}
-        {% endif %}
     </ul>
     {% block subnav %}
     {% endblock %}
@@ -43,7 +35,7 @@
         <a href="{% url 'logout' %}">abmelden</a>
         {% if user.is_staff %}
             &nbsp;|&nbsp;
-            <a href="{% url 'inventory:index' %}">Inventar</a>
+            <a href="{% url 'inventory:index' %}">Inventarliste</a>
         {% endif %}
     {% else %}
         &nbsp;|&nbsp;
