@@ -8,13 +8,28 @@ from taggit_selectize.managers import TaggableManager
 class ArticleManager(models.Manager):
 
     def get_queryset(self):
-        return super().get_queryset().select_related(
+        return super().get_queryset().filter(
+            status__in=[0, 1]
+        ).select_related(
             'manufacturer',
             'vendor'
         )
 
 
 class Article(models.Model):
+    BOUGHT_STATUS = 0
+    ORDERED_STATUS = 1
+    SOLD_STATUS = 2
+    DISPOSED_STATUS = 3
+    DESIRED_STATUS = 3
+
+    STATUS_CHOICES = (
+        (BOUGHT_STATUS, _('bought')),
+        (ORDERED_STATUS, _('ordered')),
+        (SOLD_STATUS, _('sold')),
+        (DISPOSED_STATUS, _('disposed')),
+        (DESIRED_STATUS, _('desired')),
+    )
     number = models.CharField(
         max_length=255,
         # translation
@@ -48,6 +63,12 @@ class Article(models.Model):
         null=True,
         # translation
         verbose_name=_('purchase date'),
+    )
+    status = models.IntegerField(
+        choices=STATUS_CHOICES,
+        default=BOUGHT_STATUS,
+        # translation
+        verbose_name=_('article status'),
     )
     price = models.DecimalField(
         blank=True,

@@ -50,6 +50,7 @@ class RollingstockEngines(ListView):
         return queryset.prefetch_related(
             'operator'
         ).filter(
+            vehicles__invetory_vehicles__configurations__article__status=Article.BOUGHT_STATUS,
             vehicles__invetory_vehicles__configurations__category=Configuration.ENGINE_CATEGORY,
         ).distinct()
 

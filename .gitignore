@@ -19,3 +19,6 @@ __pycache__/
 
 # local env vars
 /.env
+
+# openshift specific configs
+/openshift

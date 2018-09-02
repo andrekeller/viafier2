@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load currency %}
+{% load inventory %}
 
 {% block html_title %}
     {{ block.super }} - Inventar
@@ -48,7 +49,7 @@
                             {% if forloop.first and forloop.parentloop.first %}
                                 <td class="border-top border-left-light"
                                     rowspan="{{ article_rowspan }}"
-                                    title="{{ article.vendor }}"
+                                    title="{{ article.status|article_status_verbose }}"
                                 >{{ article.purchased|date:"SHORT_DATE_FORMAT"|default:_('unknown') }}</td>
                                 <td class="border-top border-left-light"
                                     rowspan="{{ article_rowspan }}"
@@ -86,7 +87,7 @@
                                 {% if forloop.first %}
                                     <td class="border-top border-left-light nowrap"
                                         rowspan="{{ article_rowspan }}"
-                                        title="{{ article.vendor }}"
+                                        title="{{ article.status|article_status_verbose }}"
                                     >{{ article.purchased|date:"SHORT_DATE_FORMAT"|default:_('unknown') }}</td>
                                     <td class="border-top border-left-light nowrap"
                                         rowspan="{{ article_rowspan }}"

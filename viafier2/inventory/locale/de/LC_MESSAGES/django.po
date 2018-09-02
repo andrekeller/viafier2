@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-26 14:36+0000\n"
+"POT-Creation-Date: 2018-09-02 08:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,125 +22,149 @@ msgstr ""
 msgid "inventory"
 msgstr "Inventar"
 
-#: inventory/models.py:21
+#: inventory/models.py:27
+msgid "bought"
+msgstr "gekauft"
+
+#: inventory/models.py:28
+msgid "ordered"
+msgstr "bestellt"
+
+#: inventory/models.py:29
+msgid "sold"
+msgstr "verkauft"
+
+#: inventory/models.py:30
+msgid "disposed"
+msgstr "entsorgt"
+
+#: inventory/models.py:31
+msgid "desired"
+msgstr "gewünscht"
+
+#: inventory/models.py:36
 msgid "article number"
 msgstr "Artikelnummer"
 
-#: inventory/models.py:27 inventory/models.py:218
+#: inventory/models.py:42 inventory/models.py:239
 msgid "supports markdown"
 msgstr "unterstützt Markdown"
 
-#: inventory/models.py:28 inventory/models.py:219
+#: inventory/models.py:43 inventory/models.py:240
 msgid "description"
 msgstr "Beschreibung"
 
-#: inventory/models.py:35
+#: inventory/models.py:50
 msgid "manufacturer"
 msgstr "Hersteller"
 
-#: inventory/models.py:44
+#: inventory/models.py:59
 msgid "vendor"
 msgstr "Verkäufer"
 
-#: inventory/models.py:50
+#: inventory/models.py:65
 msgid "purchase date"
 msgstr "Kaufdatum"
 
-#: inventory/models.py:58
+#: inventory/models.py:71
+msgid "article status"
+msgstr "Artikelstatus"
+
+#: inventory/models.py:79
 msgid "price"
 msgstr "Kaufpreis"
 
-#: inventory/models.py:66 inventory/models.py:196
+#: inventory/models.py:87 inventory/models.py:217
 msgid "article"
 msgstr "Artikel"
 
-#: inventory/models.py:67
+#: inventory/models.py:88
 msgid "articles"
 msgstr "Artikel"
 
-#: inventory/models.py:100 inventory/models.py:123
+#: inventory/models.py:121 inventory/models.py:144
 msgid "assembly"
 msgstr "Aufbau"
 
-#: inventory/models.py:107 inventory/models.py:234
+#: inventory/models.py:128 inventory/models.py:255
 msgid "configuration"
 msgstr "Konfiguration"
 
-#: inventory/models.py:116 inventory/models.py:205 inventory/models.py:267
+#: inventory/models.py:137 inventory/models.py:226 inventory/models.py:288
 msgid "picture"
 msgstr "Bild"
 
-#: inventory/models.py:124
+#: inventory/models.py:145
 msgid "assemblies"
 msgstr "Aufbauten"
 
-#: inventory/models.py:135
+#: inventory/models.py:156
 msgid "company name"
 msgstr "Firmenname"
 
-#: inventory/models.py:141
+#: inventory/models.py:162
 msgid "website"
 msgstr "Webseite"
 
-#: inventory/models.py:146
+#: inventory/models.py:167
 msgid "company"
 msgstr "Firma"
 
-#: inventory/models.py:147
+#: inventory/models.py:168
 msgid "companies"
 msgstr "Firmen"
 
-#: inventory/models.py:182
+#: inventory/models.py:203
 msgid "uncategorized"
 msgstr "nicht kategorisiert"
 
-#: inventory/models.py:183
+#: inventory/models.py:204
 msgid "engine"
 msgstr "Streckenlokomotive"
 
-#: inventory/models.py:184
+#: inventory/models.py:205
 msgid "shunting engine"
 msgstr "Rangierlokomotive"
 
-#: inventory/models.py:185
+#: inventory/models.py:206
 msgid "service engine"
 msgstr "Bahndienstlokomotive"
 
-#: inventory/models.py:186
+#: inventory/models.py:207
 msgid "motor coach"
 msgstr "Triebwagen / Triebzug"
 
-#: inventory/models.py:187
+#: inventory/models.py:208
 msgid "freight wagon"
 msgstr "Güterwagen"
 
-#: inventory/models.py:188
+#: inventory/models.py:209
 msgid "coach"
 msgstr "Personen- und Gepäckwagen"
 
-#: inventory/models.py:212 inventory/models.py:258 inventory/models.py:274
+#: inventory/models.py:233 inventory/models.py:279 inventory/models.py:295
 msgid "vehicle"
 msgstr "Fahrzeug"
 
-#: inventory/models.py:224
+#: inventory/models.py:245
 msgid "category"
 msgstr "Kategorie"
 
-#: inventory/models.py:235
+#: inventory/models.py:256
 msgid "configurations"
 msgstr "Konfigurationen"
 
-#: inventory/models.py:275
+#: inventory/models.py:296
 msgid "vehicles"
 msgstr "Fahrzeuge"
 
-#: inventory/templates/inventory/index.html:47
-#: inventory/templates/inventory/index.html:85
+#: inventory/templates/inventory/index.html:52
+#: inventory/templates/inventory/index.html:90
 msgid "unknown"
 msgstr "unbekannt"
 
-#: inventory/templates/inventory/index.html:50
-#: inventory/templates/inventory/index.html:88
+#: inventory/templates/inventory/index.html:55
+#: inventory/templates/inventory/index.html:93
 msgid "private sale"
 msgstr "Privatverkauf"
 
