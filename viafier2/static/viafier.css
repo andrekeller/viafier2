@@ -666,6 +666,7 @@ table td {
   vertical-align: top; }
 
 table th {
+  font-family: "Source Sans Pro", sans-serif;
   padding: 0.15rem 0.3rem 0.15rem 0.3rem;
   text-align: left; }
 

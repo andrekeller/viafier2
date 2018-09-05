@@ -193,6 +193,22 @@ class Vehicle(models.Model):
         help_text=_('supports markdown'),
         verbose_name=_('description'),
     )
+    name = models.CharField(
+        blank=True,
+        null=True,
+        max_length=255,
+        # translation
+        verbose_name=_('name'),
+    )
+    coat_of_arms = models.ForeignKey(
+        blank=True,
+        null=True,
+        on_delete=models.PROTECT,
+        related_name='vehicles',
+        to='gallery.Vector',
+        # translation
+        verbose_name=_('coat of arms'),
+    )
     picture = models.ForeignKey(
         blank=True,
         null=True,

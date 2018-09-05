@@ -1,4 +1,6 @@
+from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Count
+from django.shortcuts import Http404
 from django.views.generic import ListView
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from inventory.models import Article, Configuration, Vehicle
@@ -62,8 +64,13 @@ class RollingstockEngineKlasses(ListView):
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
-        context_data['klass'] = VehicleKlass.objects.get(slug=self.kwargs['slug'])
-        context_data['klasses'] = RollingstockEngines().get_queryset()
+        try:
+            context_data['klass'] = VehicleKlass.objects.get(slug=self.kwargs['slug'])
+            context_data['klasses'] = RollingstockEngines().get_queryset()
+        except ObjectDoesNotExist as e:
+            raise Http404(e)
+        context_data['has_names'] = any(context_data['vehicles'].values_list('vehicle__name', flat=True))
+        context_data['has_coat_of_arms'] = any(context_data['vehicles'].values_list('vehicle__coat_of_arms', flat=True))
         return context_data
 
     def get_queryset(self):
@@ -73,9 +80,10 @@ class RollingstockEngineKlasses(ListView):
             'configurations__article',
             'configurations__article__manufacturer',
             'vehicle',
+            'vehicle__coat_of_arms',
             'vehicle__klass',
             'vehicle__klass__operator',
         ).filter(
             configurations__category=Configuration.ENGINE_CATEGORY,
             vehicle__klass__slug=self.kwargs['slug'],
-        ).distinct()
+        )

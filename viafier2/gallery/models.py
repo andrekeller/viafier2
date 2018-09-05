@@ -1,5 +1,6 @@
 import os
 import uuid
+from django.core.exceptions import ValidationError
 from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -14,6 +15,10 @@ def gallery_pictures_uuid(instance, filename):
 
 def gallery_thumbs_uuid(instance, filename):
     return 'gallery/thumbs/{}/{}.jpg'.format(filename, instance.size)
+
+def validate_svg(value):
+    if value.file.content_type != 'image/svg+xml':
+        raise ValidationError('File needs to be of content type image/svg+xml')
 
 
 class Author(models.Model):
@@ -83,6 +88,52 @@ class Thumbnail(models.Model):
     class Meta:
         verbose_name = _('thumbnail')
         verbose_name_plural = _('thumbnails')
+
+
+class Vector(models.Model):
+    author = models.ForeignKey(
+        blank=True,
+        null=True,
+        on_delete=models.PROTECT,
+        to='gallery.Author',
+        # translation
+        verbose_name=_('author'),
+    )
+    license = models.ForeignKey(
+        blank=True,
+        null=True,
+        on_delete=models.PROTECT,
+        to='gallery.License',
+        # translation
+        verbose_name=_('license'),
+    )
+    source = models.URLField(
+        blank=True,
+        null=True,
+        # translation
+        help_text=_('link to original vector'),
+        verbose_name=_('source'),
+    )
+    vector = models.FileField(
+        upload_to='gallery/vectors/',
+        validators=[validate_svg, ],
+        # translation
+        verbose_name=_('vector'),
+    )
+
+    class Meta:
+        verbose_name = _('vector')
+        verbose_name_plural = _('vectors')
+
+    def __str__(self):
+        if self.vector:
+            return os.path.splitext(os.path.basename(self.vector.file.name))[0]
+        else:
+            return super().__str__()
+
+    @property
+    def src(self):
+        return self.vector.url
 
 
 class Picture(models.Model):

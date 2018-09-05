@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-02 08:13+0000\n"
+"POT-Creation-Date: 2018-09-05 20:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,7 +34,7 @@ msgstr "Aufbaunummer"
 msgid "assembly type"
 msgstr "Aufbauart"
 
-#: rollingstock/models.py:35 rollingstock/models.py:203
+#: rollingstock/models.py:35 rollingstock/models.py:219
 msgid "picture"
 msgstr "Bild"
 
@@ -119,10 +119,18 @@ msgstr "Baureihen"
 msgid "vehicle number"
 msgstr "Fahrzeugnummer"
 
-#: rollingstock/models.py:211
+#: rollingstock/models.py:201
+msgid "name"
+msgstr "Name"
+
+#: rollingstock/models.py:210
+msgid "coat of arms"
+msgstr "Wappen"
+
+#: rollingstock/models.py:227
 msgid "vehicle"
 msgstr "Fahrzeug"
 
-#: rollingstock/models.py:212
+#: rollingstock/models.py:228
 msgid "vehicles"
 msgstr "Fahrzeuge"
