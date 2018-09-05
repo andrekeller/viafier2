@@ -27,7 +27,7 @@
                     <td>{{ vehicle.vehicle.name|default_if_none:'' }}</td>
                 {% endif %}
                 {% if has_coat_of_arms %}
-                    <td><img src="{{ vehicle.vehicle.coat_of_arms.src }}" style="width: 5rem;"></td>
+                    <td><img alt="Wappen {{ vehicle.vehicle.name }}" src="{{ vehicle.vehicle.coat_of_arms.src }}" style="width: 5rem;"></td>
                 {% endif %}
                 <td>{{ vehicle.configurations.article }}</td>
 
@@ -42,7 +42,7 @@
                         </a>
                     </td>
                 {% else %}
-                    &nbsp;
+                    <td>&nbsp;</td>
                 {% endif %}
             </tr>
         {% endfor %}
