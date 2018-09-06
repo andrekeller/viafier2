@@ -15,12 +15,14 @@ if [[ $1 = 'viafier2' ]]; then
         --add-header "X-Viafier-Backend: ${HOSTNAME}" \
         --chdir /app/viafier2 \
         --die-on-term \
-        --need-app \
-        --env DJANGO_SETTINGS_MODULE=viafier2.settings \
         --enable-threads \
+        --env DJANGO_SETTINGS_MODULE=viafier2.settings \
         --master \
+        --need-app \
         --processes 2 \
         --socket :8000 \
+        --strict \
+        --thunder-lock \
         --wsgi-file viafier2/wsgi.py
 else
     exec "$@"
