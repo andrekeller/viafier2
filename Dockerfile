@@ -10,7 +10,7 @@ RUN apk --no-cache add dumb-init python3 pcre mailcap libpq libxml2 \
     apk --no-cache add --virtual build-deps \
                        python3-dev build-base postgresql-dev libxml2-dev \
                        libxslt-dev linux-headers libressl-dev \
-                       libjpeg-turbo-dev pcre-dev git && \
+                       libjpeg-turbo-dev pcre-dev && \
     pip3 install -U pip && \
     pip3 install pipenv && \
     pipenv install --ignore-pipfile --system --sequential && \

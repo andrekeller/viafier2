@@ -8,7 +8,7 @@ name = "pypi"
 django-debug-toolbar = "*"
 django-storages = "*"
 django-taggit = "*"
-taggit-selectize = {editable = true, git = "git://github.com/chhantyal/taggit-selectize.git"}
+taggit-selectize = "*"
 mistune = "*"
 pip-tools = "*"
 "psycopg2" = "*"
