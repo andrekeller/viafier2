@@ -8,43 +8,36 @@
 {% block content %}
     <h1>{{ klass.html }}</h1>
     {{ klass.description|markdown }}
-    <table>
+    <h2>Fahrzeugliste</h2>
+    <table class="table-responsive">
+    <tbody>
+    {% for vehicle in vehicles %}
         <tr>
-            <th>Betriebsnummer</th>
-            {% if has_names %}
-                <th>Taufname</th>
+        <td class="fit-to-content">
+            <a href="#">{{ vehicle.vehicle }}{% if vehicle.vehicle.name %}&nbsp;"{{ vehicle.vehicle.name }}"{% endif %}</a>
+            {% if vehicle.vehicle.coat_of_arms %}
+                <br>
+                <img class="coat-of-arms" alt="Wappen {{ vehicle.vehicle.name }}" src="{{ vehicle.vehicle.coat_of_arms.src }}">
             {% endif %}
-            {% if has_coat_of_arms %}
-                <th>Wappen</th>
+            <br>
+            {{ vehicle.configurations.article }}
+        </td>
+        <td>
+            {% if vehicle.configurations.picture %}
+                <a href="{{ vehicle.configurations.picture.src }}"
+                   data-lightbox="{{ vehicle.vehicle.klass.slug }}"
+                   data-title="{{ vehicle.configurations.picture.author }} | {{ vehicle.configurations.picture.license }}"
+                ><img alt="{{ vehicle }}" style="width: 100%; max-width: 42rem;"
+                      src="{{ vehicle.configurations.picture.src }}"
+                      srcset="{{ vehicle.configurations.picture.srcset }}">
+                </a>
+            {% else %}
+                &nbsp;
             {% endif %}
-            <th>Modell</th>
-            <th>&nbsp;</th>
+        </td>
         </tr>
-        {% for vehicle in vehicles %}
-            <tr>
-                <td>{{ vehicle.vehicle.number }}</td>
-                {% if has_names %}
-                    <td>{{ vehicle.vehicle.name|default_if_none:'' }}</td>
-                {% endif %}
-                {% if has_coat_of_arms %}
-                    <td><img alt="Wappen {{ vehicle.vehicle.name }}" src="{{ vehicle.vehicle.coat_of_arms.src }}" style="width: 5rem;"></td>
-                {% endif %}
-                <td>{{ vehicle.configurations.article }}</td>
+    {% endfor %}
 
-                {% if vehicle.configurations.picture %}
-                    <td>
-                        <a href="{{ vehicle.configurations.picture.src }}"
-                           data-lightbox="{{ vehicle.vehicle.klass.slug }}"
-                           data-title="{{ vehicle.configurations.picture.author }} | {{ vehicle.configurations.picture.license }}"
-                        ><img alt="{{ vehicle }}" style="width: 20rem;"
-                              src="{{ vehicle.configurations.picture.src }}"
-                              srcset="{{ vehicle.configurations.picture.srcset }}">
-                        </a>
-                    </td>
-                {% else %}
-                    <td>&nbsp;</td>
-                {% endif %}
-            </tr>
-        {% endfor %}
+    </tbody>
     </table>
 {% endblock %}

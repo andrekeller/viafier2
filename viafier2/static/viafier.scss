@@ -12,6 +12,8 @@ $sans_serif_font: 'Source Sans Pro', sans-serif;
 
 $highlight_color: #e2001a;
 $background_color: #fff9fb;
+$light_color: #d3d4d9;
+$dark_color: #252422;
 
 /* BASE LAYOUT */
 html {
@@ -21,15 +23,13 @@ body {
   font-family: $serif_font;
   background-color: $background_color;
   height: 100%;
-  display: flex;
-  flex-direction: column;
 }
 footer {
   font-family: $sans_serif_font;
   display: block;
-  background-color: #d3d4d9;
+  background-color: $light_color;
   padding: 0.25rem;
-  color: #252422;
+  color: $dark_color;
   text-align: center;
   font-size: 0.8rem;
 }
@@ -65,17 +65,55 @@ a:hover {
 }
 
 /* TABLES */
+table.table-responsive {
+  width: 100%;
+  tr:not(:last-child) {
+    td {
+      border-bottom: 1px solid $light_color;
+      padding-right: 0.375rem;
+    }
+  }
+  tr:only-child {
+    td {
+      padding-right: 0.375rem;
+    }
+  }
+  tr:not(:first-child) {
+    td {
+      padding-top: 0.375rem;
+      padding-left: 0.375rem;
+    }
+  }
+  .fit-to-content {
+    width: 1px;
+    white-space: nowrap;
+  }
+}
+@media all and (max-width: 768px) {
+  table.table-responsive {
+    tbody,
+    td,
+    th,
+    tr {
+      display: block;
+      td:not(:last-child) {
+        border-bottom: 0;
+      }
+    }
+  }
+}
+
+
 table {
-    border-collapse: collapse;
-    overflow-x: auto;
+  border-collapse: collapse;
 }
 table td {
-    padding: 0.15rem 0.3rem 0.15rem 0.3rem;
+    //padding: 0.15rem 0.3rem 0.15rem 0.3rem;
     vertical-align: top;
 }
 table th {
     font-family: $sans_serif_font;
-    padding: 0.15rem 0.3rem 0.15rem 0.3rem;
+    //padding: 0.15rem 0.3rem 0.15rem 0.3rem;
     text-align: left;
 }
 
@@ -224,6 +262,9 @@ nav#subsub ul:after {
 }
 
 @media all and (max-width: 768px) {
+  body {
+    min-width: 320px;
+  }
   nav#main {
     ul {
       padding: 0;
@@ -252,6 +293,7 @@ nav#subsub ul:after {
       }
     }
   }
+
 }
 
 div#content {
@@ -267,18 +309,20 @@ div#content {
 }
 
 
+.clear {
+  clear: both;
+}
+.float-right {
+  float: right;
+}
+.float-left {
+  float: left;
+}
 .nowrap {
   white-space: nowrap;
 }
 .error {
   color: $highlight_color;
-}
-.flex-grid {
-  display: flex;
-}
-.col {
-  flex: 1;
-  padding: 0.25rem;
 }
 
 .border-bottom {
@@ -306,9 +350,8 @@ div#content {
   border-right: 1px solid #ffffff;
 }
 
-@media all and (max-width: 768px) {
-  .flex-grid {
-    display: block;
-  }
+.coat-of-arms {
+  width: 4rem;
+  margin-top: 0.375rem;
+  margin-bottom: 0.375rem;
 }
-
