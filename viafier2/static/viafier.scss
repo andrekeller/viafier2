@@ -22,7 +22,9 @@ html {
 body {
   font-family: $serif_font;
   background-color: $background_color;
-  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 footer {
   font-family: $sans_serif_font;
@@ -298,7 +300,7 @@ nav#subsub ul:after {
 
 div#content {
   padding: 0.75rem;
-  flex: 1 0 auto;
+  flex: 1;
   p {
     padding: 0;
     margin: 0;
@@ -352,6 +354,6 @@ div#content {
 
 .coat-of-arms {
   width: 4rem;
-  margin-top: 0.375rem;
+  margin-top: 0.75rem;
   margin-bottom: 0.375rem;
 }

@@ -11,15 +11,18 @@ from django.urls import path
 from django.utils.translation import gettext_lazy as _
 
 
-urlpatterns = i18n_patterns(
-    path('', include('common.urls')),
+urlpatterns = [
     path('admin/', admin.site.urls),
+    path('taggit/', include('taggit_selectize.urls')),
+    path('robots.txt', lambda r: HttpResponse("User-agent: *\nDisallow: /",
+                                              content_type="text/plain")),
+]
+
+urlpatterns += i18n_patterns(
+    path('', include('common.urls')),
     path(_('inventory/'), include('inventory.urls')),
     path(_('login/'), LoginView.as_view(template_name='login.html'), name='login'),
     path(_('logout/'), LogoutView.as_view(), name='logout'),
-    path('robots.txt', lambda r: HttpResponse("User-agent: *\nDisallow: /",
-                                              content_type="text/plain")),
-    path('taggit/', include('taggit_selectize.urls')),
     prefix_default_language=False,
 )
 

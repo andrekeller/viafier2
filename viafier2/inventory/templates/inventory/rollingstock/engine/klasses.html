@@ -14,13 +14,13 @@
     {% for vehicle in vehicles %}
         <tr>
         <td class="fit-to-content">
-            <a href="#">{{ vehicle.vehicle }}{% if vehicle.vehicle.name %}&nbsp;"{{ vehicle.vehicle.name }}"{% endif %}</a>
+            <a href="#">{{ vehicle.vehicle }}</a>{% if vehicle.vehicle.name %}<br>{{ vehicle.vehicle.name }}{% endif %}
             {% if vehicle.vehicle.coat_of_arms %}
                 <br>
                 <img class="coat-of-arms" alt="Wappen {{ vehicle.vehicle.name }}" src="{{ vehicle.vehicle.coat_of_arms.src }}">
             {% endif %}
             <br>
-            {{ vehicle.configurations.article }}
+            <i>{{ vehicle.configurations.article }}</i>
         </td>
         <td>
             {% if vehicle.configurations.picture %}
