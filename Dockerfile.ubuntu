@@ -1,0 +1,36 @@
+FROM ubuntu:bionic
+
+RUN mkdir /app
+COPY Pipfile Pipfile.lock /app/
+COPY docker-entrypoint.sh /app/docker-entrypoint.sh
+
+WORKDIR /app
+ENV LC_ALL=C.UTF-8 LANG=C.UTF-8 PIP_NO_BINARY=:all:
+RUN apt-get -y update && \
+    apt-get -y dist-upgrade && \
+    apt-get -y install --no-install-recommends \
+      # runtime dependencies
+      bash dumb-init gettext libpython3.6 locales python3 \
+      libpq5 libpcre3 libxslt1.1 libjpeg-turbo8 libssl1.1 \
+      # build dependencies
+      libpq-dev libpcre3-dev libxslt1-dev libjpeg-turbo8-dev libssl-dev \
+      build-essential python3-setuptools python3-dev python3-pip && \
+    locale-gen de_CH.UTF-8 en_US.UTF-8 && \
+    pip3 install pipenv && \
+    pipenv install --ignore-pipfile --system --sequential && \
+    pip3 uninstall -y pipenv && \
+    rm -rf /root/.cache && \
+    apt-get -y remove --purge --autoremove \
+      # remove build dependecies
+      libpq-dev libpcre3-dev libxslt1-dev libjpeg-turbo8-dev libssl-dev \
+      build-essential python3-setuptools python3-dev python3-pip && \
+    apt-get -y clean
+
+COPY viafier2 /app/viafier2
+RUN /app/viafier2/manage.py compilemessages -l de
+
+USER nobody
+
+EXPOSE 8000
+ENTRYPOINT ["dumb-init", "/app/docker-entrypoint.sh"]
+CMD ["viafier2"]
