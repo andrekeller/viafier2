@@ -132,7 +132,6 @@ LOCALE_PATHS = [
     Path(BASE_DIR, 'locale'),
 ]
 LANGUAGES = [
-    ('en', _('English')),
     ('de', _('German')),
 ]
 
