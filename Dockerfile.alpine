@@ -5,6 +5,7 @@ COPY Pipfile Pipfile.lock /app/
 COPY docker-entrypoint.sh /app/docker-entrypoint.sh
 
 WORKDIR /app
+ENV PIP_NO_BINARY=:all:
 RUN apk --no-cache add dumb-init python3 pcre mailcap libpq libxml2 \
                        libxslt libressl libjpeg-turbo bash gettext && \
     apk --no-cache add --virtual build-deps \
