@@ -11,7 +11,7 @@ if [[ $1 = 'viafier2' ]]; then
     done
 
     /app/viafier2/manage.py collectstatic --noinput
-    exec /usr/local/bin/uwsgi \
+    exec /usr/bin/uwsgi \
         --add-header "X-Viafier-Backend: ${HOSTNAME}" \
         --chdir /app/viafier2 \
         --die-on-term \
