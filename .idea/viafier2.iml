@@ -6,9 +6,9 @@
         <option name="rootFolder" value="$MODULE_DIR$/viafier2" />
         <option name="settingsModule" value="viafier2/settings.py" />
         <option name="manageScript" value="manage.py" />
-        <option name="environment" value="&lt;map&gt;&#10;  &lt;entry&gt;&#10;    &lt;string&gt;DJANGO_DEBUG&lt;/string&gt;&#10;    &lt;string&gt;yes&lt;/string&gt;&#10;  &lt;/entry&gt;&#10;&lt;/map&gt;" />
+        <option name="environment" value="&lt;map/&gt;" />
         <option name="doNotUseTestRunner" value="false" />
-        <option name="trackFilePattern" value="migrations" />
+        <option name="trackFilePattern" value="" />
       </configuration>
     </facet>
   </component>
