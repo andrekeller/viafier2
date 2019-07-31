@@ -27,6 +27,13 @@ body {
   display: flex;
   flex-direction: column;
 }
+@media print {
+  body {
+    display: block;
+    background-color: white;
+    -webkit-print-color-adjust: exact; color-adjust: exact;
+  }
+}
 footer {
   font-family: $sans_serif_font;
   display: block;
@@ -35,6 +42,11 @@ footer {
   color: $dark_color;
   text-align: center;
   font-size: 0.8rem;
+}
+@media print {
+  footer {
+    display: none;
+  }
 }
 
 /* HEADINGS */
@@ -159,6 +171,11 @@ nav {
     float: left;
     padding: 0;
     margin: 0;
+  }
+}
+@media print {
+  nav {
+    display: none;
   }
 }
 

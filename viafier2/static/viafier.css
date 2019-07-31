@@ -970,6 +970,13 @@ body {
   display: flex;
   flex-direction: column; }
 
+@media print {
+  body {
+    display: block;
+    background-color: white;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact; } }
+
 footer {
   font-family: "Source Sans Pro", sans-serif;
   display: block;
@@ -978,6 +985,10 @@ footer {
   color: #252422;
   text-align: center;
   font-size: 0.8rem; }
+
+@media print {
+  footer {
+    display: none; } }
 
 /* HEADINGS */
 h1 {
@@ -1065,6 +1076,10 @@ nav {
     float: left;
     padding: 0;
     margin: 0; }
+
+@media print {
+  nav {
+    display: none; } }
 
 nav#main {
   background-color: #252422;
