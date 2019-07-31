@@ -8,7 +8,13 @@
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
       <user-name>viafier2</user-name>
-      <introspection-schemas>viafier2:public</introspection-schemas>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="database" qname="viafier2">
+            <node kind="schema" qname="public" />
+          </node>
+        </introspection-scope>
+      </schema-mapping>
     </data-source>
   </component>
 </project>
