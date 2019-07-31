@@ -177,10 +177,11 @@ class Picture(models.Model):
             return super().__str__()
 
     def save(self, **kwargs):
-        super().save(**kwargs)
-        original = Image.open(BytesIO(self.picture.read()))
+        original = Image.open(self.picture)
         if original.mode not in ('L', 'RGB'):
             original = original.convert('RGB')
+
+        # generate thumbnails
         for size in settings.THUMBNAIL_SIZES:
             thumb = original.copy()
             thumb.thumbnail((size, size), Image.ANTIALIAS)
@@ -200,6 +201,18 @@ class Picture(models.Model):
                 defaults={'thumbnail': thumbnail_uploaded_file},
             )
             thumb_memorybuffer.close()
+
+        # store a smaller version of the uploaded picture
+        memorybuffer = BytesIO()
+        original.thumbnail(original.size, Image.ANTIALIAS)
+        original.save(memorybuffer, 'jpeg', quality=96)
+        memorybuffer.seek(0)
+        self.picture = SimpleUploadedFile(
+            name=self.picture.name.rsplit('.')[0],
+            content=memorybuffer.read(),
+            content_type='image/jpeg',
+        )
+        super().save(**kwargs)
 
     @property
     def src(self):
