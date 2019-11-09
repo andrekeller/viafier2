@@ -12,6 +12,7 @@ $serif_font: 'Source Serif Pro', serif;
 $sans_serif_font: 'Source Sans Pro', sans-serif;
 
 $highlight_color: #e2001a;
+$print_background_color: #ffffff;
 $background_color: #fff9fb;
 $light_color: #d3d4d9;
 $dark_color: #252422;
@@ -30,7 +31,7 @@ body {
 @media print {
   body {
     display: block;
-    background-color: white;
+    background-color: $print_background_color;
     -webkit-print-color-adjust: exact; color-adjust: exact;
   }
 }
@@ -137,7 +138,12 @@ tr.even {
 }
 
 tr.even td.even {
-    background: #f6f6f6;
+  background-color: $background_color;
+}
+@media print {
+  tr.even td.even {
+    background-color: $print_background_color;
+  }
 }
 
 tr.odd td.even {

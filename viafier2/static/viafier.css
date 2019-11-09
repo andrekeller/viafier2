@@ -973,7 +973,7 @@ body {
 @media print {
   body {
     display: block;
-    background-color: white;
+    background-color: #ffffff;
     -webkit-print-color-adjust: exact;
     color-adjust: exact; } }
 
@@ -1060,7 +1060,11 @@ tr.even {
   background: #e4e4e4; }
 
 tr.even td.even {
-  background: #f6f6f6; }
+  background-color: #fff9fb; }
+
+@media print {
+  tr.even td.even {
+    background-color: #ffffff; } }
 
 tr.odd td.even {
   background: #e4e4e4; }
